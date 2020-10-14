@@ -24,9 +24,6 @@
 <script>
 export default {
   name: 'example1',
-  created() {
-    d:"v-focusable"
-  },
   methods:{
     left(index) {
       console.log("左");
