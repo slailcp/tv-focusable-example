@@ -5,9 +5,10 @@
       <router-link to="/Example2">自定义配置</router-link> |
       <router-link to="/Example3">滚动div</router-link> |
       <router-link to="/Example4">requestFocus/getElementByPath</router-link> |
-      <router-link to="/Example5">综合案例</router-link>
+      <router-link to="/Example5">混着使用</router-link>
+      <router-link to="/Example6">综合案例</router-link>
     </div>
-    <div class="content">
+    <div class="content-app">
       <router-view/>
     </div>
   </div>
@@ -19,5 +20,5 @@
   a{padding:10px;}
   .router-link-exact-active{color:red}
 }
-.content{padding:20px 50px;}
+.content-app{padding:20px 50px;}
 </style>

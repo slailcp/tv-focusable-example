@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import focusable from 'vue-tv-focusable'
+// import focusable from './utils/vue-tv-focusable.umd.min'
 
 
 Vue.use(focusable);
