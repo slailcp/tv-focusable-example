@@ -29,6 +29,10 @@ export default {
       this.$tv.requestFocus(this.$tv.getElementByPath('//div[@class="demo"]/div[@class="menu"]/div[1]'));
     })
   },
+  destroyed() {
+    // 由于设置的全局的init，为了不影响别的界面交互，销毁的时候，init里面的数据重置成全局的数据
+    this.$tv.resetScrollEl();
+  },
   methods: {
   menuFocus(i) {//切换滚动元素到menu
       this.currentMenu = i;
