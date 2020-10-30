@@ -1,7 +1,7 @@
 ## Install   
-angular: npm i -S ng-tv-focusable
-react: npm i -S react-tv-focusable
-vue: npm i -S vue-tv-focusable
+angular: npm i -S ng-tv-focusable    
+react: npm i -S react-tv-focusable    
+vue: npm i -S vue-tv-focusable    
 
 
 ## use   
