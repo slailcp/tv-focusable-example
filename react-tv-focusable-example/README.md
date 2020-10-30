@@ -1,2 +1,2 @@
 ### Install   
-npm i -S ng-tv-focusable
+npm i -S react-tv-focusable
