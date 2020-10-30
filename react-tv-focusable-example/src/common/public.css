@@ -1,0 +1,108 @@
+.nav-box{
+  position: fixed;
+  width:100px;
+  left:0;
+  top:0;
+  bottom:0;
+  padding-top:100px;
+}
+.nav-box .nav-item{
+  display:inline-block;
+  width:100px;
+  margin-bottom:20px;
+  padding:20px;
+  line-height: 28px;
+  color:#333;
+  background-color: #272B30;color:#fff;
+  vertical-align: text-bottom;
+  border-radius: 0 50px 50px 0;
+  text-decoration: none;
+}
+.nav-box .nav-item.active{background-color: #07C160;color:#fff}
+
+.app-contetn{padding-left:200px;}
+
+
+
+
+
+.demo{width:600px;}
+.span{
+  display:inline-block;
+  background:#6B9DFF;
+  width:100px;
+  height:100px;
+  margin-left:20px;
+  margin-top:20px;
+  transition: all .5s;vertical-align: text-bottom
+}
+.span.no{background:#ccc}
+.focus{transform: scale(1.2);box-shadow: 0 0 20px blue}
+
+
+
+.btn{padding:10px;background-color: #ccc;cursor: pointer;display: inline-block;margin-right:20px;}
+.btn.active{background-color: darkorange;color:#fff;}
+
+.ng-focus-scale{transform: scale(1.2);box-shadow: 0 0 20px blue}
+.ng-focus-rotate{transform: rotate(90deg);background:pink;box-shadow: 0 0 20px blue}
+
+
+.example4 .demo .span:nth-of-type(2){position:relative;top:-30px;}
+.example4 .demo .span:nth-of-type(6){position:relative;left:-30px;}
+.example4 .demo .span:nth-of-type(21){position:relative;left:-30px;}
+
+.demo-scroll{width: 700px;height: 700px;overflow: hidden;background:#ccc}
+.demo-con{width:1200px;margin-right:40px}
+
+
+.example6 .demo-box {
+  text-align: center;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: row;
+}
+.example6 .content {
+  height: 600px;flex:0 0 1060px;width:1060px;
+  overflow: auto;
+  background-color: bisque;
+}
+.example6 .content .content-item {
+  width: 300px;
+  height: 100px;
+  line-height: 100px;
+  margin: 10px;
+  display: inline-block;
+  background-color: #2c3e50;
+  box-sizing: border-box;
+  vertical-align: top;
+  color: #ffffff;
+}
+.example6 .menu {
+  flex:0 0 300px;width:300px;
+  height: 600px;
+  overflow: hidden;
+  padding: 20px;
+}
+.example6 .menu .menu-item  {
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: #cccccc;
+  margin-bottom: 10px;
+}
+.example6 .focus {
+  transform: scale(1.1);
+  border: 2px solid red;
+  box-shadow: 0 0 20px red;
+}
+
+
+
+
+
+
+
+
