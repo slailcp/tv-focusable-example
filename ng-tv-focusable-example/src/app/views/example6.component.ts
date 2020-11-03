@@ -1,7 +1,4 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-// import $tv from '../../directives/focusable-core';
-// import $tv from '../../directives/core.js'
-// import $tv from 'tv-focusable-core';
 import { $tv } from 'ng-tv-focusable';
 
 @Component({
