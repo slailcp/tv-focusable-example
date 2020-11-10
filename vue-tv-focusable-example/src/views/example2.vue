@@ -14,9 +14,14 @@
       <div>修改KEYS</div>
       <span class="btn" :class="keysActive===1?'active':''" @click="keys1(1)">A/W/D/S/P</span>
       <span class="btn" :class="keysActive===2?'active':''" @click="keys2(2)">Z/X/C/V/B</span>
+    </div><br>
+    <div>
+      <div>修改offsetDistance</div>
+      <span class="btn" :class="offsetActive===1?'active':''" @click="offset1(1)">offsetDistance = 50</span>
+      <span class="btn" :class="offsetActive===2?'active':''" @click="offset2(2)">offsetDistance = 250</span>
     </div>
-    <div class="demo" style="margin-top:200px;">
-      <div class="focus-item" v-focusable v-for="index in 150" :key="index" :ref="`fo`+index"
+    <div class="demo" style="margin-top:20px;background:#ccc">
+      <div class="focus-item" v-focusable v-for="index in 250" :key="index" :ref="`fo`+index"
         @left="event('left',index)"
         @right="event('right',index)"
         @up="event('up',index)"
@@ -25,6 +30,7 @@
       >
         {{ index }}
       </div>
+     
     </div>
   </div>
 </template>
@@ -34,20 +40,20 @@ export default {
     return {
       active: 2,
       disActive:1,
-      keysActive: 1
+      keysActive: 1,
+      offsetActive:1
     }
   },
   created() {
     this.keys1();
-
     // 当前页面自定义配置
     this.$tv.init({
       focusClassName: "on-focus", // 选中的class
-      offsetDistance: 500
     });
 
     this.$nextTick(() => {
       this.$tv.requestFocus(this.$refs.fo1, false);
+
     })
   },
   destroyed() {
@@ -77,6 +83,18 @@ export default {
         if(type === 'down' ) {console.log('down');}
         if(type === 'enter' ) {console.log('enter');}
       }
+    },
+    offset1() {
+      this.offsetActive = 1;
+      this.$tv.init({
+        offsetDistance: 50
+      });
+    },
+    offset2() {
+      this.offsetActive = 2
+      this.$tv.init({
+        offsetDistance: 250
+      });
     },
     type1() {
       this.active = 1;
@@ -142,20 +160,20 @@ export default {
     vertical-align: top;
   }
 
-  div:nth-child(2) {
-    position: relative;
-    top: -80px;
-  }
+  // div:nth-child(2) {
+  //   position: relative;
+  //   top: -80px;
+  // }
 
-  div:nth-child(6) {
-    position: relative;
-    top: 100px;
-  }
+  // div:nth-child(6) {
+  //   position: relative;
+  //   top: 100px;
+  // }
 
-  div:nth-child(11) {
-    position: relative;
-    top: 100px;
-  }
+  // div:nth-child(11) {
+  //   position: relative;
+  //   top: 100px;
+  // }
 }
 .on-focus {
   transform: scale(1.1);

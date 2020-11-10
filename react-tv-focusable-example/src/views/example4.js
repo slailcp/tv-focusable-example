@@ -10,7 +10,8 @@ class TvFocusable extends Component {
             active: 2,
             disActive: 0,
             keysActive:  1,
-            focusClassNameActive:  1
+            focusClassNameActive:  1,
+            offsetActive:1
         }
     }
     
@@ -139,6 +140,22 @@ class TvFocusable extends Component {
             focusClassName: "ng-focus-rotate",
         });
     }
+
+    offsetDistance1() {
+        this.setState({offsetActive:1})
+    
+        $tv.init({
+            offsetDistance: 50,
+        });
+    }
+    
+    offsetDistance2() {
+        this.setState({offsetActive:2})
+    
+        $tv.init({
+            offsetDistance: 250,
+        });
+    }
     
     toggleClass(el, className){
         if(!el) {return;}
@@ -176,6 +193,11 @@ class TvFocusable extends Component {
                     <div className="title">修改选中的classname的样式</div><br/>
                     <span className={this.state.focusClassNameActive===1?'active btn':'btn'} onClick={() => this.focusclassname1()}>scale</span>
                     <span className={this.state.focusClassNameActive===2?'active btn':'btn'} onClick={() => this.focusclassname2()}>rotate</span>
+                </div>
+                <div>
+                    <div className="title">修改offsetDistance</div><br/>
+                    <span className={this.state.offsetActive===1?'active btn':'btn'} onClick={() => this.offsetDistance1()}>offsetDistance = 50</span>
+                    <span className={this.state.offsetActive===2?'active btn':'btn'} onClick={() => this.offsetDistance2()}>offsetDistance = 250</span>
                 </div>
                 <div className="demo" style={{paddingTop:'100px'}}> {lists}</div>
             </div>

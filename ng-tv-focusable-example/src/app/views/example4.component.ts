@@ -24,6 +24,11 @@ import { $tv } from 'ng-tv-focusable';
     <span class="btn" [ngClass]="focusClassNameActive===1?'active':''" (click)="focusclassname1()">scale</span>
     <span class="btn" [ngClass]="focusClassNameActive===2?'active':''" (click)="focusclassname2()">rotate</span>
   </div>
+  <div>
+    <div class="title">修改offsetDistance</div><br/>
+    <span class="btn" [ngClass]="offsetDistanceActive===1?'active':''" (click)="offsetDistance1()">offsetDistance = 50</span>
+    <span class="btn" [ngClass]="offsetDistanceActive===2?'active':''" (click)="offsetDistance2()">offsetDistance = 250</span>
+  </div>
   <div class="demo">
     <span 
     *ngFor='let in of counter(105) ;let i = index' 
@@ -63,9 +68,10 @@ import { $tv } from 'ng-tv-focusable';
 })
 export class Example4Component implements OnDestroy, AfterViewInit {
   private active = 2;
-  private disActive = 0
-  private keysActive =  1
-  private focusClassNameActive =  1
+  private disActive = 0;
+  private keysActive =  1;
+  private focusClassNameActive =  1;
+  private offsetDistanceActive = 1;
 
   ngAfterViewInit() {
     this.focusclassname1();
@@ -188,6 +194,21 @@ export class Example4Component implements OnDestroy, AfterViewInit {
 
     $tv.init({
       focusClassName: "ng-focus-rotate",
+    });
+  }
+
+  offsetDistance1() {
+    this.offsetDistanceActive = 1;
+
+    $tv.init({
+      offsetDistance: 50,
+    });
+  }
+  offsetDistance2() {
+    this.offsetDistanceActive = 2;
+
+    $tv.init({
+      offsetDistance: 250,
     });
   }
 
