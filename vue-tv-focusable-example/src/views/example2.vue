@@ -43,6 +43,7 @@ export default {
     // 当前页面自定义配置
     this.$tv.init({
       focusClassName: "on-focus", // 选中的class
+      offsetDistance: 500
     });
 
     this.$nextTick(() => {

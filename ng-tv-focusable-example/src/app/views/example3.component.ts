@@ -53,44 +53,48 @@ export class Example3Component implements OnInit {
 
   left(index) {
     if(index === 9) {
+      console.log('left');
       $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   up(index) {
     if(index === 6) {
+      console.log('up')
       $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   right(index) {
     if(index === 10) {
+      console.log('right')
       $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   down(index) {
     if(index === 5) {
+      console.log('down')
       $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   enter(index) {
     if(index === 3) {
-      alert('click');
+      console.log('click');
     }
   }
 
   focus(index, $event) {
     if(index === 27) {
-      alert(`第${28}个将要获取焦点了哦！`)
+      console.log(`第${28}个将要获取焦点了哦！`)
       console.log($event.detail.el);
     }
   }
 
   blur(index, $event) {
     if(index === 22) {
-      alert(`第${23}个将要失去焦点了哦！`)
+      console.log(`第${23}个将要失去焦点了哦！`)
       console.log($event.detail.el);
     }
   }
