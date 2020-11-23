@@ -22,7 +22,7 @@ export default class App extends Component {
           <div>
             <nav className="nav-box">
                 <NavLink className="nav-item" activeClassName="active" to="/example1">设置元素可获取焦点(focusable)</NavLink>
-                <NavLink className="nav-item" activeClassName="active" to="/example2">指定焦点移到到某一个元素上</NavLink>
+                <NavLink className="nav-item" activeClassName="active" to="/example2">指定焦点移到到某一个元素上(ie)</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example3">自定义焦点移动(自定义事件)</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example4">$tv.init<br/>$tv.resetXXX</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example5">局部滚动</NavLink>
