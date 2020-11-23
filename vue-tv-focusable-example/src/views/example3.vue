@@ -12,7 +12,8 @@
 export default {
   created() {
       this.$nextTick(() => {
-          this.$tv.setScrollEl(this.$tv.getElementByPath('//div[@class="demo"]'));
+          this.$tv.setScrollEl(document.querySelector('.demo'));
+        //   this.$tv.setScrollEl(this.$tv.getElementByPath('//div[@class="demo"]'));
           this.$tv.requestFocus(this.$refs.fo5)
       })
   },
@@ -33,7 +34,7 @@ export default {
         height: 400px;
         position: relative;
 
-        overflow: auto;
+        overflow: hidden;
         .wrapper{
           width: 800px;
         }
@@ -62,7 +63,7 @@ export default {
     }
 
     .focus {
-        transform: scale(1.1);
+        transform: scale(2);
         border: 2px solid red;
         box-shadow: 0 0 20px red;
     }
