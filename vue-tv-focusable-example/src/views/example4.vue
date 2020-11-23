@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div>跳转</div>
+      <div>ie上不可以使用getElementByPath获取el哦</div>
       <span class="btn" :class="active===1?'active':''" @click="skip1">动效跳到第35个div</span> <br/> <br/>
       <span class="btn" :class="active===2?'active':''" @click="skip2">没有动效跳到第50个div</span>
     </div><br>
@@ -14,9 +14,12 @@
   </div>
 </template>
 <script>
+
+import {IEVersion} from '../utils/browser'
 /**
  * requestFocus(el,isAnimate); // isAnimate:是否有动画效果，默认true
  * getElementByPath(str); // xPath 获取el
+ * ie上不可以使用getElementByPath获取el哦,
  */
 export default {
   data() {
@@ -30,10 +33,19 @@ export default {
 
   methods: {
    skip1() {
-     this.$tv.requestFocus(this.$tv.getElementByPath('//div[@class="demo"]/div[35]'))
+     if(IEVersion() === -1) {
+        this.$tv.requestFocus(this.$tv.getElementByPath('//div[@class="demo"]/div[35]'))
+      } else {  // ie浏览器
+          this.$tv.requestFocus(this.$refs.fo35)
+      }
    },
    skip2() {
-     this.$tv.requestFocus(this.$tv.getElementByPath('//div[@class="demo"]/div[50]'), false);
+      if(IEVersion() === -1) {
+          this.$tv.requestFocus(this.$tv.getElementByPath('//div[@class="demo"]/div[50]'), false);
+      } else {  // ie浏览器
+          this.$tv.requestFocus(this.$refs.fo50)
+      }
+
    },
   }
   
