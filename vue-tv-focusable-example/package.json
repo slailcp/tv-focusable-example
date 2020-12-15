@@ -10,7 +10,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vue-tv-focusable": "^0.1.9"
+    "vue-tv-focusable": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
