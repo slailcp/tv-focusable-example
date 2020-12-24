@@ -24,6 +24,7 @@ class Example7 extends Component {
     }
 
     componentDidMount() {
+		document.body.style.backgroundColor = '#010d19';
         $tv.init({
             focusableClassName:'r-focusable', // 必须配置项
             distanceToCenter:true

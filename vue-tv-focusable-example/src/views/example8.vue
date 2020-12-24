@@ -48,7 +48,6 @@ export default {
   },
   created() {
     document.body.style.backgroundColor = '#010d19';
-    
 
     this.$nextTick(() => {
       this.$tv.init({
