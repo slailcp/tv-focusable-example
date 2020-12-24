@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-example1',
   template: `
   <div class="demo">
-    <span class="span" focusable> 可获取焦点的元素 </span>
+    <span class="span" focusable (longPress)="longPress()" (click)="longPress()"> 可获取焦点的元素longPress </span>
     <span class="span no"> no </span>
     <span class="span" focusable> 可获取焦点的元素 </span>
     <span class="span no"> no </span>
@@ -33,7 +33,10 @@ export class Example1Component implements OnInit {
   constructor() {  }
 
   ngOnInit() { }
-
+  longPress(){
+    alert('longPress');
+    
+  }
 
   counter(i: number) {
     return new Array(i);

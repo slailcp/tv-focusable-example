@@ -57,6 +57,7 @@ import { $tv } from 'ng-tv-focusable';
     .span:nth-of-type(2){position:relative;top:-30px;}
     .span:nth-of-type(6){position:relative;left:-30px;}
     .span:nth-of-type(21){position:relative;left:-30px;}
+    .span:nth-of-type(12){position:relative;top:50px;}
     .ng-focus-scale{transform: scale(1.2);box-shadow: 0 0 20px blue}
     .ng-focus-rotate{transform: rotate(90deg);background:pink;box-shadow: 0 0 20px blue}
 

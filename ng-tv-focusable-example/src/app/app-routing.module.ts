@@ -6,6 +6,8 @@ import { Example3Component } from './views/example3.component';
 import { Example4Component } from './views/example4.component';
 import { Example5Component } from './views/example5.component';
 import { Example6Component } from './views/example6.component';
+import { Example7Component } from './views/example7.component';
+import { Example7DetailComponent } from './views/example7-detail.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'example6',
     component: Example6Component
+  },
+  {
+    path: 'example7',
+    component: Example7Component
+  },
+  {
+    path: 'example7-detail',
+    component: Example7DetailComponent
   },
   {path: '', redirectTo: '/example1', pathMatch: 'full'},
 ];
