@@ -7,6 +7,7 @@
       <router-link to="/Example4">requestFocus/getElementByPath</router-link> |
       <router-link to="/Example5">混着使用</router-link>
       <router-link to="/Example6">综合案例</router-link>
+      <router-link to="/Example8">tv画廊</router-link>
     </div>
     <div class="content-app">
       <router-view/>

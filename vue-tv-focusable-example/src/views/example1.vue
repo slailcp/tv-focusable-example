@@ -11,7 +11,7 @@
       <div class="focus-item" v-focusable @up="up(8)">8-up</div>
       <div class="focus-item" v-focusable >9</div>
       <div class="focus-item" v-focusable @down="down(10)">10-down</div>
-      <div class="focus-item" v-focusable>11</div>
+      <div class="focus-item" v-focusable @longPress="longPress(12)">11-longPress</div>
       <div class="focus-item" v-focusable @click="enter(12)">12-click</div>
       <div class="focus-item" style="background:gray">13 no-focusable</div>
       <div class="focus-item" style="background:gray">14 no-focusable</div>
@@ -36,9 +36,13 @@ export default {
     },
     down(index) {
       console.log("下");
+       alert("下");
     },
     enter(index) { // 按enter键，触发click
-      console.log("enter-click");
+      alert("enter-click");
+    },
+    longPress(){
+      console.log('长按');
     }
   }
 }

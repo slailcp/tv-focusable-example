@@ -19,6 +19,11 @@
       <div>修改offsetDistance</div>
       <span class="btn" :class="offsetActive===1?'active':''" @click="offset1(1)">offsetDistance = 50</span>
       <span class="btn" :class="offsetActive===2?'active':''" @click="offset2(2)">offsetDistance = 250</span>
+    </div><br>
+    <div>
+      <div>修改distanceToCenter</div>
+      <span class="btn" :class="distanceToCenterActive===1?'active':''" @click="distanceToCenter1(1)">distanceToCenter = false</span>
+      <span class="btn" :class="distanceToCenterActive===2?'active':''" @click="distanceToCenter2(2)">distanceToCenter = true</span>
     </div>
     <div class="demo" style="margin-top:20px;background:#ccc">
       <div class="focus-item" v-focusable v-for="index in 250" :key="index" :ref="`fo`+index"
@@ -41,7 +46,8 @@ export default {
       active: 2,
       disActive:1,
       keysActive: 1,
-      offsetActive:1
+      offsetActive:1,
+      distanceToCenterActive:1
     }
   },
   created() {
@@ -62,6 +68,11 @@ export default {
     this.$tv.resetFocusClassName();
     this.$tv.resetFindFocusType();
     this.$tv.resetInitDis();
+    this.$tv.init({
+      offsetDistance: 50,
+      distanceToCenter:false,
+      findFocusType:1
+    });
     // 由于main.js的init中只设置了KEYS，所以将KEYS重置为配置的值
     this.$tv.init({
       KEYS: {
@@ -138,6 +149,18 @@ export default {
         }
       });
     },
+    distanceToCenter1(){
+      this.distanceToCenterActive = 1;
+      this.$tv.init({
+      distanceToCenter: false
+      });
+    },
+    distanceToCenter2(){
+      this.distanceToCenterActive = 2;
+      this.$tv.init({
+      distanceToCenter: true
+      });
+    }
   }
   
 }
@@ -158,6 +181,9 @@ export default {
     background-color: pink;
     box-sizing: border-box;
     vertical-align: top;
+    &:nth-of-type(13) {
+      position: relative;top: 30px;
+    }
   }
 
   // div:nth-child(2) {
@@ -176,8 +202,8 @@ export default {
   // }
 }
 .on-focus {
-  transform: scale(1.1);
-  border: 2px solid red;
+  transform: scale(1.2);
+ 
   box-shadow: 0 0 20px red;
 }
 </style>
