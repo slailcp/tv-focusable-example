@@ -8,17 +8,13 @@ import { $tv } from 'ng-tv-focusable';
   <div class="tv-box">
     <div class="item-box">
       <div class="perspective">
-        <div class="item" 
+        <div class="item" focusable *ngFor='let item of list ;let index = index'
         [ngStyle]="{
           'left': -100 * index - index * 20 +'px',
           'z-index': activeIndex === index ? 1100 :1000 - abs(activeIndex - index) * 5,
           'transform': activeIndex < index ? 'rotateY(-30deg)':activeIndex === index?'rotateY(0deg)':'rotateY(30deg)' 
         }"
-        focusable 
-        (left)="left(index,$event)" (right)="right(index,$event)" 
-        (down)="nofocus()" (up)="nofocus()" (click)="skip(index)"
-        *ngFor='let item of list ;let index = index' 
-        >
+        (left)="left(index,$event)" (right)="right(index,$event)" (down)="nofocus()" (up)="nofocus()" (click)="skip(index)">
           <img [src]="item.url"/>
           <span class="txt">{{item.title}}</span>
         </div>
@@ -75,13 +71,8 @@ export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
     $tv.setScrollEl(document.querySelector('.item-box'))
     $tv.requestFocus($tv.getElementByPath("//div[@class='perspective']/div[3]"));
   }
-  ngOnDestroy() {
-    $tv.resetScrollEl();
-  }
-
-  abs(num){
-    return Math.abs(num)
-  }
+  ngOnDestroy() {$tv.resetScrollEl(); }
+  abs(num){ return Math.abs(num)}
   skip(index){
     if(index === 8) {
       this.loadingShow = true;
@@ -94,15 +85,11 @@ export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
     $tv.requestFocus(event.target);
   }
   right(index, event){
-    if(index === this.list.length - 1 ){
-      return;
-    }
-   this.activeIndex = index + 1;
+    if(index === this.list.length - 1 ){return;}
+    this.activeIndex = index + 1;
   }
   left(index,event){
-    if(index === 0 ){
-      return;
-    }
+    if(index === 0 ){return; }
     this.activeIndex = index - 1;
   }
 }
