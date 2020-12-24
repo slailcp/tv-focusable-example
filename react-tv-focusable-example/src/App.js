@@ -11,6 +11,7 @@ import Example3 from './views/example3';
 import Example4 from './views/example4';
 import Example5 from './views/example5';
 import Example6 from './views/example6';
+import Example7 from './views/example7';
 
 import './common/public.css';
 
@@ -27,6 +28,7 @@ export default class App extends Component {
                 <NavLink className="nav-item" activeClassName="active" to="/example4">$tv.init<br/>$tv.resetXXX</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example5">局部滚动</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example6">综合案例</NavLink>
+                <NavLink className="nav-item" activeClassName="active" to="/example7">tv画廊</NavLink>
             </nav>
     
             {/* A <Switch> looks through its children <Route>s and
@@ -50,6 +52,9 @@ export default class App extends Component {
                 </Route>
                 <Route path="/example6">
                   <Example6 />
+                </Route>
+                <Route path="/example7">
+                  <Example7 />
                 </Route>
               </Switch>
             </div>

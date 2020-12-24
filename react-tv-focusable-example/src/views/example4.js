@@ -11,7 +11,8 @@ class TvFocusable extends Component {
             disActive: 0,
             keysActive:  1,
             focusClassNameActive:  1,
-            offsetActive:1
+            offsetActive:1,
+            distanceToCenterActive:1
         }
     }
     
@@ -156,6 +157,19 @@ class TvFocusable extends Component {
             offsetDistance: 250,
         });
     }
+
+    distanceToCenter1(){
+        this.setState({distanceToCenterActive:1})
+        $tv.init({
+            distanceToCenter: false
+        });
+    }
+    distanceToCenter2(){
+        this.setState({distanceToCenterActive:2})
+        $tv.init({
+            distanceToCenter: true
+        });
+    }
     
     toggleClass(el, className){
         if(!el) {return;}
@@ -169,7 +183,7 @@ class TvFocusable extends Component {
             lists.push(<span 
                 onClick={() => this.event(i+1)}
                 className="span r-focusable"
-                key={i}>{i+1}</span>)
+                key={i}>{i+1} </span>)
         }
 
         return (
@@ -199,6 +213,12 @@ class TvFocusable extends Component {
                     <span className={this.state.offsetActive===1?'active btn':'btn'} onClick={() => this.offsetDistance1()}>offsetDistance = 50</span>
                     <span className={this.state.offsetActive===2?'active btn':'btn'} onClick={() => this.offsetDistance2()}>offsetDistance = 250</span>
                 </div>
+                <div>
+                    <div className="title">修改distanceToCenter</div><br/>
+                    <span className={this.state.distanceToCenterActive===1?'active btn':'btn'} onClick={() => this.distanceToCenter1()}>distanceToCenter = false</span>
+                    <span className={this.state.distanceToCenterActive===2?'active btn':'btn'} onClick={() => this.distanceToCenter2()}>distanceToCenter = true</span>
+                </div>
+                
                 <div className="demo" style={{paddingTop:'100px'}}> {lists}</div>
             </div>
         )

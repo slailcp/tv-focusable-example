@@ -3,6 +3,7 @@ import '../common/public.css';
 import {$tv} from 'react-tv-focusable'
 class TvFocusable extends Component {
     componentDidMount() {
+        console.log();
         $tv.init({
             focusableClassName:'r-focusable', // 必须配置项
         })
@@ -15,6 +16,7 @@ class TvFocusable extends Component {
             el.addEventListener("down", this.down);
             el.addEventListener("onBlur", this.blur);
             el.addEventListener("onFocus", this.focus);
+            el.addEventListener("longPress", this.longPress);
         }
     }
 
@@ -27,6 +29,7 @@ class TvFocusable extends Component {
             el.removeEventListener("down", this.down);
             el.removeEventListener("onBlur", this.blur);
             el.removeEventListener("onFocus", this.focus);
+            el.removeEventListener("longPress", this.longPress);
         }
     }
 
@@ -36,6 +39,20 @@ class TvFocusable extends Component {
             $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
         }
     }
+    longPress(event) {
+        const index = event.target.getAttribute('index');
+        if(Number(index) === 4) {
+            console.log('longPress');
+        }
+    }
+
+    
+    enter(index) {
+        if(Number(index) === 4) {
+            console.log('click');
+        }
+    }
+
     right(event) {
         const index = event.target.getAttribute('index');
         if(Number(index) === 11){
@@ -55,11 +72,6 @@ class TvFocusable extends Component {
         }
     }
 
-    enter(index) {
-        if(Number(index) === 4) {
-            alert('click');
-        }
-    }
     
     focus(event) {
         const index = event.target.getAttribute('index');

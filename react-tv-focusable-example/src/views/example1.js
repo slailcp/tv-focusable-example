@@ -5,7 +5,8 @@ import {$tv} from 'react-tv-focusable'
 class TvFocusable extends Component {
 
     componentDidMount() {
-        // 必须要配置init的focusableClassName（可以获取焦点的元素classname），否则焦点不生效
+      console.log($tv);
+        // // 必须要配置init的focusableClassName（可以获取焦点的元素classname），否则焦点不生效
         $tv.init({
             focusableClassName:'r-focusable', // 必须配置项
             /**
@@ -17,11 +18,18 @@ class TvFocusable extends Component {
             // initDis: 20 // 只有当findFocusType为0时才会生效，直线类型找焦点时，按键方向的交叉轴方向允许的最大找焦点范围,（默认20px）
         })
       }
+
+      enter(s){
+        if(s === 1) {
+          console.log(111);
+        }
+       
+      }
     
     render(){
         return (
         <div className="demo">
-            <span className="span r-focusable"> 可获取焦点的元素 </span>
+            <span className="span r-focusable" onClick={() => this.enter(1)}> 可获取焦点的元素 </span>
             <span className="span no"> no </span>
             <span className="span r-focusable"> 可获取焦点的元素 </span>
             <span className="span no"> no </span>

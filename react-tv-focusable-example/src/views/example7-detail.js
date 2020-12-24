@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import '../common/public.css';
 import {$tv} from 'react-tv-focusable'
 
-class Example6 extends Component {
+class Example6Detail extends Component {
     contentCount = 30;
     constructor() {
         super();
@@ -124,4 +124,4 @@ class Example6 extends Component {
 }
 
 
-export default Example6;
+export default Example6Detail;
