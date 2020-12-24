@@ -24,8 +24,6 @@ class Example7 extends Component {
     }
 
     componentDidMount() {
-        document.body.style.backgroundColor = '#010d19';
-
         $tv.init({
             focusableClassName:'r-focusable', // 必须配置项
             distanceToCenter:true
@@ -43,30 +41,19 @@ class Example7 extends Component {
         }
     }
     componentWillUnmount() {
-        $tv.init({
-            distanceToCenter:false
-        })
+        $tv.init({ distanceToCenter:false })
     }
-
-
-      nofocus(event){
-        this.$tv.requestFocus(event.target);
-      }
-      right(event){
-        const index = Number(event.target.getAttribute('index'));
-        if(index === this.list.length - 1 ){
-          return;
-        }
-        this.setState({activeIndex:index + 1})
-      }
-      left(event){
-        const index = Number(event.target.getAttribute('index'));
-
-        if(index === 0 ){
-          return;
-        }
-        this.setState({activeIndex:index - 1})
-      }
+    nofocus(event){ this.$tv.requestFocus(event.target); }
+    right(event){
+      const index = Number(event.target.getAttribute('index'));
+      if(index === this.list.length - 1 ){ return; }
+      this.setState({activeIndex:index + 1})
+    }
+    left(event){
+      const index = Number(event.target.getAttribute('index'));
+      if(index === 0 ){ return; }
+      this.setState({activeIndex:index - 1})
+    }
 
     
     render(){
@@ -81,14 +68,11 @@ class Example7 extends Component {
                  zIndex: this.state.activeIndex === index ? 1100 :1000-Math.abs(this.state.activeIndex - index) * 5,
                  transform: `rotateY(${this.state.activeIndex < index ? '-30deg':this.state.activeIndex === index?'0deg':'30deg'}) scale(${1-Math.abs(this.state.activeIndex - index)*0.05})`,
                 }}
-      
             >
               <img src={item.url}/>
               <span className="txt">{item.title}</span>
             </div>)
         }
-        
-        
         return (
             <div className="tv-box">
             <div className="item-box">
