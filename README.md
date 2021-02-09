@@ -3,6 +3,7 @@ angular: npm i -S ng-tv-focusable
 react: npm i -S react-tv-focusable    
 vue: npm i -S vue-tv-focusable    
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/52e9872bb28fced6b600526b66d1aca8.gif#pic_center)
 
 ## use   
 ### vue
