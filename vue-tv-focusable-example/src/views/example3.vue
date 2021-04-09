@@ -59,7 +59,7 @@ export default {
     },
     distanceToCenter2() {
       this.distanceToCenterActive = 2;
-      his.$tv.distanceToCenter = true;
+      this.$tv.distanceToCenter = true;
     },
   },
 };
