@@ -4,13 +4,13 @@
   left:0;
   top:0;
   bottom:0;
-  padding-top:100px;
+  padding-top:50px;
 }
 .nav-box .nav-item{
   display:inline-block;
   width:100px;
   margin-bottom:20px;
-  padding:20px;
+  padding:5px 20px;
   line-height: 28px;
   color:#333;
   background-color: #272B30;color:#fff;
@@ -22,9 +22,18 @@
 
 .app-contetn{padding-left:200px;}
 
-
-
-
+.ex8-dialog{position:fixed;background:rgba(0,0,0,0.5);left:0;right:0;top:0;bottom:0;}
+.ex8-dialog-demo{width:380px;height: 500px;margin:20px auto;background: #fff;overflow: hidden;}
+.ex8-dialog-demo .span{background: #c3b7ff;}
+.focus123{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px green;
+}
+.open,.close{
+  cursor: pointer;
+  display: block;width:150px;line-height:40px;padding:0 20px;margin: 20px auto;border:0;background:gray;
+}
+.open.focus123,.close.focus123{border:0;box-shadow: none;background: #ff6600;color:#fff}
 
 .demo{width:600px;}
 .span{
@@ -37,11 +46,11 @@
   transition: all .5s;vertical-align: text-bottom
 }
 .span.no{background:#ccc}
-.focus{transform: scale(2);box-shadow: 0 0 20px blue}
+.focus{transform: scale(1.1);box-shadow: 0 0 20px blue}
 
 
 
-.btn{padding:10px;background-color: #ccc;cursor: pointer;display: inline-block;margin-right:20px;}
+.btn{font-size:12px;padding:3px;background-color: #ccc;cursor: pointer;display: inline-block;margin-right:20px;}
 .btn.active{background-color: darkorange;color:#fff;}
 
 .ng-focus-scale{transform: scale(1.2);box-shadow: 0 0 20px blue}
@@ -121,4 +130,4 @@
 .tv-box .focus img{border-color:#c3b7ff}
 
 
-
+.ex3 .span:nth-of-type(4){width:220px!important}

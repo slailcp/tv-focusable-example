@@ -13,10 +13,11 @@ import { $tv } from 'ng-tv-focusable';
     (right)="right(i)" 
     (down)="down(i)" 
     (click)="enter(i)" 
+    (longPress)="enter(i)" 
     (onFocus)="focus(i, $event)" 
     (onBlur)="blur(i, $event)">
       {{i+1}}
-      <i *ngIf="i == 3">按enter键触发click方法</i>
+      <i *ngIf="i == 3">按/长按，enter键触发click/longpress</i>
       <i *ngIf="i == 5">向下跳到18</i>
       <i *ngIf="i == 6">向上跳到18</i>
       <i *ngIf="i == 9">向左跳到18</i>

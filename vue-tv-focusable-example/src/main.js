@@ -16,9 +16,14 @@ vm.$tv.init({
     KEY_RIGHT: [39], // →
     KEY_DOWN: [40], // ↓
     KEY_ENTER: [83, 13], // 83: s键  13：enter键
-  }
+  },
+  // focusClassName:'focus',
+  // initDis:100,
+  // findFocusType:0,
+  // distanceToCenter:true,
+  // offsetDistance:100,
+  // longPressTime:3000,
 });
-
 new Vue({
   router,
   render: h => h(App)

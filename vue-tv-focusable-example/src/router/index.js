@@ -6,6 +6,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'Example',
+    component: () => import(/* webpackChunkName: "about" */ '../views/example.vue')
+  },
+  {
+    path: '/Example1',
     name: 'Example1',
     component: () => import(/* webpackChunkName: "about" */ '../views/example1.vue')
   },
@@ -43,6 +48,11 @@ const routes = [
     path: '/tv-detail8',
     name: 'tvDetail8',
     component: () => import(/* webpackChunkName: "about" */ '../views/example8-detail.vue')
+  },
+  {
+    path: '/Example9',
+    name: 'Example9',
+    component: () => import(/* webpackChunkName: "about" */ '../views/example9.vue')
   },
 ]
 

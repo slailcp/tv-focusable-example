@@ -1,32 +1,36 @@
 <template>
   <div>
-    <div class="demo" style="margin-top:200px;">
+    <div class="demo" style="margin-top: 200px">
       <div class="focus-item" v-focusable>1</div>
       <div class="focus-item" v-focusable>2</div>
       <div class="focus-item" v-focusable @left="left(3)">3-left</div>
       <div class="focus-item" v-focusable @right="right(4)">4-right</div>
-      <div class="focus-item" v-focusable @click="showDialog">5<br/>(点击enter有弹出层)</div>
+      <div class="focus-item" v-focusable @click="showDialog">
+        5<br />(点击enter有弹出层)
+      </div>
       <div class="focus-item" v-focusable>6</div>
-      <div class="focus-item" v-focusable >7</div>
+      <div class="focus-item" v-focusable>7</div>
       <div class="focus-item" v-focusable @up="up(8)">8-up</div>
-      <div class="focus-item" v-focusable >9</div>
+      <div class="focus-item" v-focusable>9</div>
       <div class="focus-item" v-focusable @down="down(10)">10-down</div>
-      <div class="focus-item" v-focusable @longPress="longPress(12)">11-longPress</div>
+      <div class="focus-item" v-focusable @longPress="longPress(12)">
+        11-longPress
+      </div>
       <div class="focus-item" v-focusable @click="enter(12)">12-click</div>
-      <div class="focus-item" style="background:gray">13 no-focusable</div>
-      <div class="focus-item" style="background:gray">14 no-focusable</div>
+      <div class="focus-item" style="background: gray">13 no-focusable</div>
+      <div class="focus-item" style="background: gray">14 no-focusable</div>
       <div class="focus-item" v-focusable>15</div>
       <div class="focus-item" v-focusable>16</div>
     </div>
     <!--弹出层-->
     <div class="dialog-bg" v-show="dShow"></div>
     <div class="dialog" v-show="dShow">
-      <div class="content">
-        content
-      </div>
+      <div class="content">content</div>
       <div class="btns">
-        <button class="btn-item" v-focusable ref="enter" @click="closeDialog" @left="EnterSelf" @right="skipCancel" @up="EnterSelf" @down="EnterSelf">确定</button>
-        <button class="btn-item" v-focusable ref="cancel" @click="closeDialog" @left="skipEnter" @right="CancelSelf" @up="CancelSelf" @down="CancelSelf">取消</button>
+        <button class="btn-item" v-focusable ref="enter">确定</button>
+        <button class="btn-item" v-focusable ref="cancel" @click="closeDialog">
+          取消
+        </button>
       </div>
     </div>
   </div>
@@ -34,13 +38,13 @@
 
 <script>
 export default {
-  name: 'example1',
-  data(){
-    return{
-      dShow: false
-    }
+  name: "Example1",
+  data() {
+    return {
+      dShow: false,
+    };
   },
-  methods:{
+  methods: {
     left(index) {
       console.log("左");
     },
@@ -52,38 +56,30 @@ export default {
     },
     down(index) {
       console.log("下");
-       alert("下");
+      alert("下");
     },
-    enter(index) { // 按enter键，触发click
+    enter(index) {
+      // 按enter键，触发click
       alert("enter-click");
     },
-    longPress(){
-      console.log('长按');
+    longPress() {
+      console.log("长按");
     },
     // 弹出层焦点部分
-    showDialog(){
+    showDialog() {
       this.dShow = true;
-      this.$tv.requestFocus(this.$refs.enter)
+      this.$tv.limitingEl = document.querySelector(".dialog");
+      this.$tv.requestFocus(this.$refs.enter);
     },
-    skipCancel(){
-      this.$tv.requestFocus(this.$refs.cancel)
-    },
-    skipEnter(){
-      this.$tv.requestFocus(this.$refs.enter)
-    },
-    EnterSelf(){
-      this.$tv.requestFocus(this.$refs.enter)
-    },
-    CancelSelf(){
-      this.$tv.requestFocus(this.$refs.cancel)
-    },
-    closeDialog(){
+    closeDialog() {
       this.dShow = false;
-      this.$tv.requestFocus(this.$tv.getElementByPath('//div[@class="demo"]/div[5]'));
+      this.$tv.limitingEl = null;
+      this.$tv.requestFocus(
+        this.$tv.getElementByPath('//div[@class="demo"]/div[5]')
+      );
     },
-    
-  }
-}
+  },
+};
 </script>
 <style lang="less" scoped>
 .demo {
@@ -120,11 +116,36 @@ export default {
   border: 2px solid red;
   box-shadow: 0 0 20px red;
 }
-.btn-item.focus{
-  background: blue;color:#fff;border: none;box-shadow: none;transform: none;
+.btn-item.focus {
+  background: blue;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  transform: none;
 }
 
-.btn-item{margin-right:20px;border:none;background: gray;padding:10px; }
-.dialog-bg{position: fixed;background: rgba(0,0,0,0.5);top:0;right:0;bottom:0;left:0;}
-.dialog{position: fixed;background: #fff;width: 200px;height:100px;top:50%;left:45%;z-index: 1;padding: 10px;;}
+.btn-item {
+  margin-right: 20px;
+  border: none;
+  background: gray;
+  padding: 10px;
+}
+.dialog-bg {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.dialog {
+  position: fixed;
+  background: #fff;
+  width: 200px;
+  height: 100px;
+  top: 50%;
+  left: 45%;
+  z-index: 1;
+  padding: 10px;
+}
 </style>

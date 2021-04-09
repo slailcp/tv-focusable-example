@@ -7,7 +7,7 @@
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
-    "react-tv-focusable": "^0.1.3"
+    "react-tv-focusable": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

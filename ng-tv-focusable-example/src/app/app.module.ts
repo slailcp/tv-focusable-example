@@ -11,6 +11,7 @@ import { Example5Component } from './views/example5.component';
 import { Example6Component } from './views/example6.component';
 import { Example7Component } from './views/example7.component';
 import { Example7DetailComponent } from './views/example7-detail.component';
+import { Example8Component } from './views/example8.component';
 
 import { TvFocusableModule } from 'ng-tv-focusable';
 
@@ -25,7 +26,8 @@ import { TvFocusableModule } from 'ng-tv-focusable';
     Example5Component,
     Example6Component,
     Example7Component,
-    Example7DetailComponent
+    Example7DetailComponent,
+    Example8Component
   ],
   imports: [
     BrowserModule,
