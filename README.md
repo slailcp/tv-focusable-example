@@ -4,9 +4,9 @@ react: npm i -S react-tv-focusable
 vue: npm i -S vue-tv-focusable          
 js:<script src="focusable.js"></script>  
 
-[ng-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109445268)     
-[react-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109444532) 
-[vue-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109044265)      
+[ng-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109445268)                 
+[react-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109444532)                      
+[vue-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109044265)                
 [vue-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109447289)    
 
 ## 简介
