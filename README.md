@@ -1,94 +1,15 @@
 ## Install   
-angular: npm i -S ng-tv-focusable    
-react: npm i -S react-tv-focusable    
-vue: npm i -S vue-tv-focusable    
+angular: npm i -S ng-tv-focusable                     
+react: npm i -S react-tv-focusable     
+vue: npm i -S vue-tv-focusable          
+js:<script src="focusable.js"></script>  
 
-![画廊](https://img-blog.csdnimg.cn/img_convert/52e9872bb28fced6b600526b66d1aca8.gif)
+[ng-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109445268)                 
+[react-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109444532)                      
+[vue-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109044265)                
+[vue-tv-focusable文档 ](https://blog.csdn.net/sllailcp/article/details/109447289)    
 
-## use   
-### vue
-```js
-// main.js
-import focusable from 'vue-tv-focusable'
-Vue.use(focusable);
+## 简介
+tv-focusable 是适用于在 TV 端进行网页开发时管理焦点移动的框架，以简洁的 Api 让前端网页开发就像 android 开发一样自动管理焦点。
 
-// component.vue
-this.$tv.init(opt);
-this.$tv.setScrollEl(el)
-this.$tv.resetScrollEl();
-this.$tv.resetFocusClassName();
-this.$tv.resetFindFocusType();
-this.$tv.resetInitDis();
-this.$tv.resetKEYS();
-
-<div v-focusable>可获取焦点的元素</div>
-<div>不可获取焦点的元素</div>
-```
-
-### angular
-```js
-// app.module.ts
-import { TvFocusableModule } from 'ng-tv-focusable';
-@NgModule({
-  declarations: [...],
-  imports: [
-    ...,
-    TvFocusableModule
-  ],
-  ...
-  bootstrap: [AppComponent]
-})
-
-// page.component.ts
-import { $tv } from 'ng-tv-focusable';
-$tv.init(opt);
-$tv.setScrollEl(el)
-$tv.resetScrollEl();
-$tv.resetFocusClassName();
-$tv.resetFindFocusType();
-$tv.resetInitDis();
-$tv.resetKEYS();
-
-<div focusable>可获取焦点的元素</div>
-<div>不可获取焦点的元素</div>
-```
-
-### react
-```js
-// page.js
-import { $tv } from 'react-tv-focusable';
-$tv.init({
-  focusableClassName:'config-focusable-classname', // react中，必须配置项
-})
-
-$tv.init(opt);
-$tv.setScrollEl(el)
-$tv.resetScrollEl();
-$tv.resetFocusClassName();
-$tv.resetFindFocusType();
-$tv.resetInitDis();
-$tv.resetKEYS();
-
-<div class="config-focusable-classname">可获取焦点的元素</div>
-<div>不可获取焦点的元素</div>
-```
-### 参数说明
-```js
-init(opt);
-opt: {
-      // focusableClassName:string; //class名称字符串， react中才会有此项，且必须配置项
-      initDis: number;
-      focusClassName: string; // class名称字符串
-      findFocusType: numbe;
-      KEYS: {
-        KEY_LEFT: number[];
-        KEY_UP: number[]; 
-        KEY_DOWN: number[];
-        KEY_ENTER: number[]
-      }
-  }
-  
-  $tv.setScrollEl(el)
-  el： element
-```
-
+![展示](https://img-blog.csdnimg.cn/20201016100758392.gif#pic_center)
