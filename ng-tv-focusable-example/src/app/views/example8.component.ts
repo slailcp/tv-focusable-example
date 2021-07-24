@@ -137,8 +137,8 @@ export class Example8Component implements OnInit, OnDestroy, AfterViewInit {
   close() {
     this.show = !this.show;
     $tv.scrollEl = $tv.getElementByPath('//div[@class="demo"]');
-    if(this.focusEl){$tv.requestFocus(this.focusEl);}
     $tv.limitingEl = null;
+    if(this.focusEl){$tv.requestFocus(this.focusEl);}
   }
   
 }

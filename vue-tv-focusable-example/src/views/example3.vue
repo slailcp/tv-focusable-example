@@ -50,7 +50,7 @@ export default {
   destroyed() {
     // 由于设置的全局的init，为了不影响别的界面交互，销毁的时候，init里面的数据重置成全局的数据
     this.$tv.resetScrollEl();
-    his.$tv.distanceToCenter = false;
+    this.$tv.distanceToCenter = false;
   },
   methods: {
     distanceToCenter1() {

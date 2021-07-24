@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { $tv } from 'react-tv-focusable'
-import { IEVersion } from '../common/browser'
 
 import '../common/public.css';
 
@@ -13,7 +12,6 @@ class Example2 extends Component {
         }
     }
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable'; // 必须配置项
         $tv.offsetDistance = 50;
         $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[9]'))
     }
@@ -31,7 +29,7 @@ class Example2 extends Component {
     render() {
         let lists = [];
         for (let i = 0; i < 105; i++) {
-            lists.push(<span className="span r-focusable" ref={'fo' + (i + 1)} key={i}> {i + 1} </span>)
+            lists.push(<span className="span" focusable ref={'fo' + (i + 1)} key={i}> {i + 1} </span>)
         }
 
         return (

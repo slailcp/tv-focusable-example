@@ -9,7 +9,7 @@ class Example5 extends Component {
         }
     }
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable'; // 必须配置项
+        $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
         $tv.setScrollEl($tv.getElementByPath('//div[@class="demo-scroll"]'))
         $tv.requestFocus($tv.getElementByPath('//div[@class="demo-con"]/span[8]'))
     }

@@ -13,6 +13,7 @@ import Example5 from './views/example5';
 import Example6 from './views/example6';
 import Example7 from './views/example7';
 import Example8 from './views/example8';
+import Example9 from './views/example9';
 
 import './common/public.css';
 
@@ -31,6 +32,7 @@ export default class App extends Component {
                 <NavLink className="nav-item" activeClassName="active" to="/example6">综合案例</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example7">tv画廊</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example8">弹出层滚动</NavLink>
+                <NavLink className="nav-item" activeClassName="active" to="/example9">表单</NavLink>
             </nav>
     
             {/* A <Switch> looks through its children <Route>s and
@@ -60,6 +62,9 @@ export default class App extends Component {
                 </Route>
                 <Route path="/example8">
                   <Example8 />
+                </Route>
+                <Route path="/example9">
+                  <Example9 />
                 </Route>
               </Switch>
             </div>

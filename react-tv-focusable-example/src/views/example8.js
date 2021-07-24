@@ -12,7 +12,7 @@ class Example8 extends Component {
   }
   componentDidMount() {
     // // 必须要配置init的focusableClassName（可以获取焦点的元素classname），否则焦点不生效
-    $tv.focusableClassName = 'r-focusable';// 必须配置项
+    $tv.focusableClassName = 'r-focusable';// // 不使用focusable属性的话，必须配置focusableClassName项
     $tv.focusClassName = 'focus123';
     /**
      * 其余可配置可不配置，不做配置的情况下使用react-tv-focusable默认的配置
@@ -31,9 +31,9 @@ class Example8 extends Component {
   close() {
     this.setState({ show: false })
     $tv.scrollEl = null;
+    $tv.limitingEl = null;
     if (this.state.focusEl) { $tv.requestFocus(this.state.focusEl); }
 
-    $tv.limitingEl = null;
   }
 
   render() {

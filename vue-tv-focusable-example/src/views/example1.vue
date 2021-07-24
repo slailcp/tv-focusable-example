@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="demo" style="margin-top: 200px">
-      <div class="focus-item" v-focusable>1</div>
+      <div class="focus-item item1" v-focusable @onFocus="focus">1 focus</div>
       <div class="focus-item" v-focusable>2</div>
       <div class="focus-item" v-focusable @left="left(3)">3-left</div>
       <div class="focus-item" v-focusable @right="right(4)">4-right</div>
       <div class="focus-item" v-focusable @click="showDialog">
         5<br />(点击enter有弹出层)
       </div>
-      <div class="focus-item" v-focusable>6</div>
+      <div class="focus-item" v-focusable @onBlur="blur">6  blur</div>
       <div class="focus-item" v-focusable>7</div>
       <div class="focus-item" v-focusable @up="up(8)">8-up</div>
       <div class="focus-item" v-focusable>9</div>
@@ -45,6 +45,12 @@ export default {
     };
   },
   methods: {
+    focus() {
+      console.log("focus");
+    },
+    blur(){
+      console.log("blur");
+    },
     left(index) {
       console.log("左");
     },

@@ -95,8 +95,8 @@ export default {
     close() {
       this.show = !this.show;
       this.$tv.scrollEl = this.$tv.getElementByPath('//div[@class="demo"]');
-      if(this.focusEl){this.$tv.requestFocus(this.focusEl)}
       this.$tv.limitingEl = null;
+      if(this.focusEl){this.$tv.requestFocus(this.focusEl)}
     },
   },
 };

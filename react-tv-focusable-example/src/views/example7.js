@@ -26,7 +26,7 @@ class Example7 extends Component {
   componentDidMount() {
     document.body.style.backgroundColor = '#010d19';
 
-    $tv.focusableClassName = 'r-focusable'; // 必须配置项
+    $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
     $tv.distanceToCenter = true;
 
     $tv.setScrollEl(document.querySelector('.item-box'))
@@ -71,7 +71,7 @@ class Example7 extends Component {
           transform: `rotateY(${this.state.activeIndex < index ? '-30deg' : this.state.activeIndex === index ? '0deg' : '30deg'}) scale(${1 - Math.abs(this.state.activeIndex - index) * 0.05})`,
         }}
       >
-        <img src={item.url} />
+        <img src={item.url}  alt=""/>
         <span className="txt">{item.title}</span>
       </div>)
     }
@@ -82,7 +82,7 @@ class Example7 extends Component {
             {lists}
           </div>
         </div>
-        <div className="bottom-img"><img src="../common/images/tv/r-menu.png" /></div>
+        <div className="bottom-img"><img src="../common/images/tv/r-menu.png" alt=""/></div>
       </div>
     )
   }

@@ -12,7 +12,7 @@ class Example7Detail extends Component {
     }
 
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable'; // 必须配置项
+        $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
         $tv.requestFocus($tv.getElementByPath('//div[@class="demo-box"]/div[@class="menu"]/div[1]'));
 
         const menuItemels = document.getElementsByClassName('menu-item');

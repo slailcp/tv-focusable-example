@@ -3,7 +3,7 @@ import '../common/public.css';
 import { $tv } from 'react-tv-focusable'
 class Example3 extends Component {
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable'; // 必须配置项
+        $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
         const els = document.getElementsByClassName('r-focusable');
         for (let el of els) {
             // 自定义事件，名称一定要是和下面的名字对应哦
@@ -58,7 +58,9 @@ class Example3 extends Component {
     }
     up(event) {
         const index = event.target.getAttribute('index');
+        
         if (Number(index) === 7) {
+            console.log($tv.getElementByPath('//div[@class="demo"]/span[18]'))
             $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
         }
     }

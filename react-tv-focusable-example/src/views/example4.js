@@ -19,7 +19,7 @@ class Example4 extends Component {
 
 
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable';// 必须配置项
+        $tv.focusableClassName = 'r-focusable';// // 不使用focusable属性的话，必须配置focusableClassName项
         this.focusclassname1();
     }
 
