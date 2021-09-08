@@ -10,7 +10,9 @@
       <router-link to="/Example6">综合案例</router-link> |
       <router-link to="/Example8">tv画廊</router-link> |
       <router-link to="/Example9">弹出层滑动</router-link> |
-      <router-link to="/Example10">表单</router-link>
+      <router-link to="/Example10">表单</router-link> |
+      <router-link to="/Example11">elementui表单</router-link> |
+      <router-link to="/Example12">antd表单</router-link> 
     </div>
     <div class="content-app">
       <router-view/>
@@ -21,8 +23,7 @@
 <style lang="less">
 *{margin:0;padding:0;list-style: none;}
 #nav{text-align: center;
-  a{padding:10px;}
-  .router-link-exact-active{color:red}
+  a{padding:10px;margin:10px 0;display:inline-block}
+  .router-link-exact-active{color:#ff6600}
 }
-.content-app{padding:20px 50px;}
 </style>

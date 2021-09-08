@@ -42,6 +42,9 @@ export default {
   },
   created() {
     this.$nextTick(() => {
+      console.log(this.$tv.limitingEl)
+      //this.$tv.limitingEl = null
+      this.$tv.reset();
       this.$tv.setScrollEl(document.querySelector(".demo"));
       //   this.$tv.setScrollEl(this.$tv.getElementByPath('//div[@class="demo"]'));
       this.$tv.requestFocus(this.$refs.fo5);
@@ -55,7 +58,7 @@ export default {
   methods: {
     distanceToCenter1() {
       this.distanceToCenterActive = 1;
-      his.$tv.distanceToCenter = false;
+      this.$tv.distanceToCenter = false;
     },
     distanceToCenter2() {
       this.distanceToCenterActive = 2;
