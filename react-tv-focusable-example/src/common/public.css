@@ -22,7 +22,7 @@
 
 .app-contetn{padding-left:200px;}
 
-.ex8-dialog{position:fixed;background:rgba(0,0,0,0.5);left:0;right:0;top:0;bottom:0;}
+.ex8-dialog{position:fixed;background:rgba(0,0,0,0.5);left:0;right:0;top:0;bottom:0;z-index: 99;}
 .ex8-dialog-demo{width:380px;height: 500px;margin:20px auto;background: #fff;overflow: hidden;}
 .ex8-dialog-demo .span{background: #c3b7ff;}
 .focus123{
@@ -43,11 +43,12 @@
   height:100px;
   margin-left:20px;
   margin-top:20px;
-  transition: all .5s;vertical-align: text-bottom
+  transition: all .5s;vertical-align: text-bottom;position: relative;
 }
 .span.no{background:#ccc}
 .focus{transform: scale(1.1);box-shadow: 0 0 20px blue}
 
+.hl{display: inline-block;width: 50px;height: 30px;background-color: red;position: absolute;right:0;bottom:0;}
 
 
 .btn{font-size:12px;padding:3px;background-color: #ccc;cursor: pointer;display: inline-block;margin-right:20px;}
@@ -131,3 +132,13 @@
 
 
 .ex3 .span:nth-of-type(4){width:220px!important}
+
+
+
+
+.antdform{width:500px;padding-top:100px}
+.inline-block{display: inline-block;}
+.ex10-content{height:190px;overflow: hidden;}
+.ex10-content p{padding-left:20px;}
+.ex10-content .focus{box-shadow: none;background:#ccc;transition: .2s all;transform: none;}
+.antdform .ant-card{margin: 20px auto!important;height:300px;}

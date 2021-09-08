@@ -24,11 +24,13 @@ class Example1 extends Component {
       <div className="demo">
         <span className="span" focusable onClick={() => this.enter(1)}> 可获取焦点的元素 </span>
         <span className="span no"> no </span>
-        <span className="span r-focusable"> 可获取焦点的元素 </span>
+        <span className="span r-focusable"> 可获取焦点的元素</span>
         <span className="span no"> no </span>
         <span className="span r-focusable"> 可获取焦点的元素 </span>
         <span className="span no"> no </span>
-        <span className="span" focusable> 可获取焦点的元素 </span>
+        <svg className="span" focusable> svg </svg>
+        <canvas className="span" focusable> canvas </canvas>
+        <span className="span" focusable> 可获取焦点的元素  <span focusable className="hl">被忽略</span></span>
       </div>
     )
   }
