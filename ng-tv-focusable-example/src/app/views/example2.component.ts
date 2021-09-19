@@ -1,15 +1,15 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 @Component({
   selector: 'app-example1',
   template: `
-  <span class="btn" [ngClass]="active===1?'active':''" (click)="skip1()">动效跳到第15个div</span> <br/> <br/>
-  <span class="btn" [ngClass]="active===2?'active':''" (click)="skip2()">没有动效跳到第20个div</span>
+  <span class="btn" [ngClass]="active===1?'active':''" (click)="skip1()">动效跳到第40个div</span> <br/> <br/>
+  <span class="btn" [ngClass]="active===2?'active':''" (click)="skip2()">没有动效跳到第41个div</span>
   <div class="demo">
     <span 
     *ngFor='let in of counter(60) ;let i = index' 
     (down)="down(i+1)"
-    class="span" focusable >
+    class="span" [ng-focusable] >
       {{i+1}}
       <span *ngIf="i === 1">向下移动到第30个div</span>
     </span>
@@ -41,23 +41,23 @@ export class Example2Component implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // 默认选中demo下的第10个div
-    $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[1]'))
+    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[1]'))
   }
   counter(i: number) {
     return new Array(i);
   }
   down(index) {
     if(index === 2) {
-      $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[30]'))
+      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[30]'))
     }
   }
   skip1() {
     this.active = 1;
-    $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[15]'))
+    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[40]'))
   }
 
   skip2() {
     this.active = 2;
-    $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[20]'), false);
+    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[41]'), false);
   }
 }

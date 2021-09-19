@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example3',
@@ -9,7 +9,7 @@ import { $tv } from 'ng-tv-focusable';
       <span 
       *ngFor='let in of counter(105) ;let i = index' 
       class="span" 
-      focusable >
+      [ng-focusable] >
         {{i+1}}
       </span>
     </div>
@@ -36,11 +36,11 @@ export class Example5Component implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() { }
   ngAfterViewInit() {
-    $tv.setScrollEl($tv.getElementByPath('//div[@class="demo"]'))
-    $tv.requestFocus($tv.getElementByPath('//div[@class="demo-con"]/span[8]'))
+    window.$tv.setScrollEl(window.$tv.getElementByPath('//div[@class="demo"]'))
+    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo-con"]/span[8]'))
   }
   ngOnDestroy() {
-    $tv.resetScrollEl();
+    window.$tv.resetScrollEl();
   }
 
   counter(i: number) {

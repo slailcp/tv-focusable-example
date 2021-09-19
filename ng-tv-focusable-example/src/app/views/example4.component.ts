@@ -1,5 +1,5 @@
 import { Component, OnDestroy, AfterViewInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example3',
@@ -36,14 +36,9 @@ import { $tv } from 'ng-tv-focusable';
     <span class="btn" [ngClass]="distanceToCenterActive===2?'active':''" (click)="distanceToCenter2()">distanceToCenter = true</span>
   </div><br/>
   <div>
-    <div class="title">修改distanceToCenter</div>
-    <span focusable class="btn" [ngClass]="distanceToCenterActive===1?'active':''" (click)="distanceToCenter1()">distanceToCenter = false</span>
-    <span focusable class="btn" [ngClass]="distanceToCenterActive===2?'active':''" (click)="distanceToCenter2()">distanceToCenter = true</span>
-  </div><br/>
-  <div>
     <div class="title">修改limitingE=.demo，焦点只能在demo中移动</div>
-    <span focusable class="btn" [ngClass]="limitingElActive===1?'active':''" (click)="limitingEl1()">limitingE = null</span>
-    <span focusable class="btn" [ngClass]="limitingElActive===2?'active':''" (click)="limitingEl2()">limitingE = .demo</span>
+    <span [ng-focusable] class="btn" [ngClass]="limitingElActive===1?'active':''" (click)="limitingEl1()">limitingE = null</span>
+    <span [ng-focusable] class="btn" [ngClass]="limitingElActive===2?'active':''" (click)="limitingEl2()">limitingE = .demo</span>
   </div>
   <div class="demo">
     <span 
@@ -54,7 +49,7 @@ import { $tv } from 'ng-tv-focusable';
     (down)="event('down',index)"
     (click)="event('enter',index)"
     class="span" 
-    focusable>
+    [ng-focusable]>
       {{i + 1}}
     </span>
   </div>
@@ -97,19 +92,19 @@ export class Example4Component implements OnDestroy, AfterViewInit {
   }
   ngOnDestroy() {
     // 如果没设置全局配置，可以直接调用reset()方法
-    $tv.reset(); // 将所有的配置项还原成ng-tv-focusable的默认配置
+    window.$tv.reset(); // 将所有的配置项还原成ng-tv-[ng-focusable]的默认配置
     /** 
      * 也可以单独重置某个属性，例如
-     * 重置focusClassName  => $tv.resetFocusClassName();
-     * 重置KEYS =>  $tv.resetKEYS();
-     * 重置initDis =>  $tv.resetInitDis();
-     * 重置findFocusType =>  $tv.resetFindFocusType();
+     * 重置focusClassName  => window.$tv.resetFocusClassName();
+     * 重置KEYS =>  window.$tv.resetKEYS();
+     * 重置initDis =>  window.$tv.resetInitDis();
+     * 重置findFocusType =>  window.$tv.resetFindFocusType();
      * */ 
     
 
      // 如果在app.modules.ts中有全局的配置那么，此处就需要还原成全局配置
      /**
-      $tv.init({
+      window.$tv.init({
         focusClassName: "config-focus", // 聚焦元素的className （默认focus）
         KEYS: {KEY_LEFT: [37], KEY_UP: [38], KEY_RIGHT: [39], KEY_DOWN: [40]}, // 自定义键值
         findFocusType: 1, //找焦点方式 0：直线上 1：最近（默认1） 
@@ -137,14 +132,14 @@ export class Example4Component implements OnDestroy, AfterViewInit {
   type1() {
     this.active = 1;
     this.disActive = 2;
-    $tv.findFocusType = 0; // 0：直线上最近的 
-    $tv.initDis = 29;
+    window.$tv.findFocusType = 0; // 0：直线上最近的 
+    window.$tv.initDis = 29;
   }
 
   type2() {
     this.active = 2;
     this.disActive = 0;
-    $tv.findFocusType = 1;// 1：上下左右距离最近的div
+    window.$tv.findFocusType = 1;// 1：上下左右距离最近的div
   }
 
   /**
@@ -156,15 +151,15 @@ export class Example4Component implements OnDestroy, AfterViewInit {
   dis(type,num) {
     this.disActive = type;
     this.active = 1;
-    $tv.findFocusType = 0;
-    $tv.initDis = num;
+    window.$tv.findFocusType = 0;
+    window.$tv.initDis = num;
   }
 
   // dis2() {
   //   this.disActive = 2;
   //   this.active = 1;
-  //   $tv.findFocusType = 0;
-  //   $tv.findFocusType = 0;
+  //   window.$tv.findFocusType = 0;
+  //   window.$tv.findFocusType = 0;
   // }
 
   /**
@@ -177,7 +172,7 @@ export class Example4Component implements OnDestroy, AfterViewInit {
   */
   keys1() {
     this.keysActive = 1;
-    $tv.KEYS = {
+    window.$tv.KEYS = {
       KEY_LEFT: [65, 37], // 65:A  37:←
       KEY_UP: [87, 38], // 87:W  38:↑
       KEY_RIGHT: [68, 39], // 68:D   39:→
@@ -188,7 +183,7 @@ export class Example4Component implements OnDestroy, AfterViewInit {
 
   keys2() {
     this.keysActive = 2;
-    $tv.KEYS = {
+    window.$tv.KEYS = {
       KEY_LEFT: [90], // Z
       KEY_UP: [88], // X
       KEY_RIGHT: [67], // C
@@ -203,40 +198,40 @@ export class Example4Component implements OnDestroy, AfterViewInit {
   focusclassname1() {
     this.focusClassNameActive = 1;
     this.toggleClass(document.getElementsByClassName('ng-focus-rotate')[0], 'ng-focus-rotate');
-    $tv.focusClassName = "ng-focus-scale";
+    window.$tv.focusClassName = "ng-focus-scale";
   }
 
   focusclassname2() {
     this.focusClassNameActive = 2;
     this.toggleClass(document.getElementsByClassName('ng-focus-scale')[0], 'ng-focus-scale')
-    $tv.focusClassName = "ng-focus-rotate";
+    window.$tv.focusClassName = "ng-focus-rotate";
   }
 
   offsetDistance1() {
     this.offsetDistanceActive = 1;
-    $tv.offsetDistance = 50;
+    window.$tv.offsetDistance = 50;
   }
   offsetDistance2() {
     this.offsetDistanceActive = 2;
-    $tv.offsetDistance = 250;
+    window.$tv.offsetDistance = 250;
   }
 
   distanceToCenter1() {
     this.distanceToCenterActive = 1;
-    $tv.distanceToCenter = false;
+    window.$tv.distanceToCenter = false;
   }
   distanceToCenter2() {
     this.distanceToCenterActive = 2;
-    $tv.distanceToCenter = true;
+    window.$tv.distanceToCenter = true;
   }
 
   limitingEl1() {
     this.limitingElActive = 1;
-    $tv.limitingEl = null;
+    window.$tv.limitingEl = null;
   }
   limitingEl2() {
     this.limitingElActive = 2;
-    $tv.limitingEl = document.querySelector(".demo");
+    window.$tv.limitingEl = document.querySelector(".demo");
   }
 
 

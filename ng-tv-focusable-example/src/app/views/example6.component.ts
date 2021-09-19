@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example3',
@@ -7,7 +7,7 @@ import { $tv } from 'ng-tv-focusable';
   <div class="demo">
     <div class="menu">
       <div 
-      focusable
+      [ng-focusable]
       class="item"
       *ngFor='let in of counter(10) ;let i = index'
       (onFocus)="menuFocus(i+1)" 
@@ -19,7 +19,7 @@ import { $tv } from 'ng-tv-focusable';
     </div>
     <div class="content">
       <div 
-      focusable
+      [ng-focusable]
       *ngFor='let in of counter(contentCount) ;let i = index'
       (onFocus)="contentFocus()" 
       (up)="contentUp(i+1,$event)" 
@@ -83,10 +83,10 @@ export class Example6Component implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/div[@class="menu"]/div[1]'));
+    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/div[@class="menu"]/div[1]'));
   }
   ngOnDestroy() {
-    $tv.resetScrollEl();
+    window.$tv.resetScrollEl();
   }
 
   counter(i: number) {
@@ -95,32 +95,32 @@ export class Example6Component implements OnInit, OnDestroy, AfterViewInit {
 
   menuFocus(i) {//切换滚动元素到menu
     this.currentMenu = i;
-    $tv.setScrollEl($tv.getElementByPath("//div[@class='menu']"))
+    window.$tv.setScrollEl(window.$tv.getElementByPath("//div[@class='menu']"))
   }
 
   contentFocus() {//切换滚动元素到内容
-    $tv.setScrollEl($tv.getElementByPath("//div[@class='content']"))
+    window.$tv.setScrollEl(window.$tv.getElementByPath("//div[@class='content']"))
   }
 
   menuUp(i, event) {//在第一个menu按上，焦点不动
     if (i == 1) {
-      $tv.requestFocus(event.target);
+      window.$tv.requestFocus(event.target);
     }
   }
 
   menuDown(i, event) {//在最下面一个menu按下，焦点不动，避免右边内容item自动聚焦
     if (i == 10) {
-      $tv.requestFocus(event.target);
+      window.$tv.requestFocus(event.target);
     }
   }
 
   menuRight() {//从menu到内容时固定到内容的第一个元素
-    $tv.requestFocus($tv.getElementByPath("//div[@class='content']/div[1]"), false);
+    window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='content']/div[1]"), false);
   }
 
   contentDown(index, event) {
     if (this.contentCount - index < 3) {//如果是最后一行的内容,按下焦点不许动
-      $tv.requestFocus(event.target);
+      window.$tv.requestFocus(event.target);
     }
   }
 
@@ -128,12 +128,12 @@ export class Example6Component implements OnInit, OnDestroy, AfterViewInit {
     if (i % 3 == 1) {//在第一列的内容上按左时，让当前menu的item聚焦
       console.log(this.currentMenu);
       
-      $tv.requestFocus($tv.getElementByPath(`//div[@class='menu']/div[${this.currentMenu}]`), false);
+      window.$tv.requestFocus(window.$tv.getElementByPath(`//div[@class='menu']/div[${this.currentMenu}]`), false);
     }
   }
   contentUp(index, event){
     if (index<=3) {
-      $tv.requestFocus(event.target);
+      window.$tv.requestFocus(event.target);
     }
   }
 }

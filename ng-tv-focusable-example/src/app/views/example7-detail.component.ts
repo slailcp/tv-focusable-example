@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example7-detail',

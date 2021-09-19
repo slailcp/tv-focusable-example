@@ -1,18 +1,18 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example8',
   template: `
   <div>
-    <span class="open" focusable (click)="open()">click open dialog</span>
+    <span class="open" [ng-focusable] (click)="open()">click open dialog</span>
 
     <div class="demo">
       <!--    <div class="item" ref="myDiv">s</div>-->
       <div
         class="item"
-        focusable
+        [ng-focusable]
         *ngFor='let in of counter(10) ;let i = index' 
         (longPress)="longPress(index)"
       >
@@ -31,10 +31,10 @@ import { $tv } from 'ng-tv-focusable';
       "
     >
       <div class="demo demo5">
-        <span class="close" focusable (click)="close()"
+        <span class="close" [ng-focusable] (click)="close()"
           >click close dialog</span
         >
-        <span *ngFor='let in of counter(30) ;let i = index'  class="item" focusable>
+        <span *ngFor='let in of counter(30) ;let i = index'  class="item" [ng-focusable]>
           {{ index }}
         </span>
       </div>
@@ -110,13 +110,13 @@ export class Example8Component implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    $tv.focusClassName = "focus123";
-    $tv.requestFocus(
-      $tv.getElementByPath('//div[@class="demo"]/div[2]')
+    window.$tv.focusClassName = "focus123";
+    window.$tv.requestFocus(
+      window.$tv.getElementByPath('//div[@class="demo"]/div[2]')
     );
   }
   ngOnDestroy() {
-    $tv.reset();
+    window.$tv.reset();
   }
   counter(i: number) {
     return new Array(i);
@@ -126,19 +126,19 @@ export class Example8Component implements OnInit, OnDestroy, AfterViewInit {
   open() {
     this.show = !this.show;
     this.focusEl = document.querySelector(".focus123");
-    $tv.limitingEl = document.querySelector(".demo5"); // 只有.demo5里面的focusable可以获取焦点
-    $tv.scrollEl = $tv.getElementByPath(
+    window.$tv.limitingEl = document.querySelector(".demo5"); // 只有.demo5里面的[ng-focusable]可以获取焦点
+    window.$tv.scrollEl = window.$tv.getElementByPath(
       '//div[@class="demo demo5"]'
     );
-    $tv.requestFocus(
-      $tv.getElementByPath('//div[@class="demo demo5"]/span[3]')
+    window.$tv.requestFocus(
+      window.$tv.getElementByPath('//div[@class="demo demo5"]/span[3]')
     );
   }
   close() {
     this.show = !this.show;
-    $tv.scrollEl = $tv.getElementByPath('//div[@class="demo"]');
-    $tv.limitingEl = null;
-    if(this.focusEl){$tv.requestFocus(this.focusEl);}
+    window.$tv.scrollEl = window.$tv.getElementByPath('//div[@class="demo"]');
+    window.$tv.limitingEl = null;
+    if(this.focusEl){window.$tv.requestFocus(this.focusEl);}
   }
   
 }

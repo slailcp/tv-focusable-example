@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example9',
@@ -7,47 +7,36 @@ import { $tv } from 'ng-tv-focusable';
   <div class="form">
   <div class="group">
     <span class="key">姓名</span>
-    <span class="value"><input class="text" type="text" focusable/></span>
+    <span class="value"><input class="text" type="text" [ng-focusable]/></span>
   </div>
   <div class="group">
     <span class="key">性别</span>
     <div class="value">
-      <label><input type="radio" name="sex" focusable (longPress)="longPress()"/> 男(longPress)</label>  
-      <label><input type="radio" name="sex" focusable/> 女</label>
+      <label><input type="radio" name="sex" [ng-focusable] (longPress)="longPress()"/> 男(longPress)</label>  
+      <label><input type="radio" name="sex" [ng-focusable]/> 女</label>
     </div>
   </div>
   <div class="group">
     <span class="key">爱好</span>
     <div class="value">
-      <label><input type="checkbox" name="like" focusable/> 跑步</label>  
-      <label><input type="checkbox" name="like" focusable/> 打球</label>  
-      <label><input type="checkbox" name="like" focusable/> 游泳</label>  
-      <label><input type="checkbox" name="like" focusable/> 爬山</label>
+      <label><input type="checkbox" name="like" [ng-focusable]/> 跑步</label>  
+      <label><input type="checkbox" name="like" [ng-focusable]/> 打球</label>  
+      <label><input type="checkbox" name="like" [ng-focusable]/> 游泳</label>  
+      <label><input type="checkbox" name="like" [ng-focusable]/> 爬山</label>
     </div>
   </div>
 
-  <div class="group">
-    <span class="key">公司</span>
-    <span class="value">
-      <select class="text" focusable>
-        <option value="">请选择</option>
-        <option value="张三企业">张三企业</option>
-        <option value="里斯企业">里斯企业</option>
-        <option value="王五企业">王五企业</option>
-      </select>
-    </span>
-  </div>
 
   <div class="group">
     <span class="key">说明</span>
     <span class="value">
-      <textarea focusable></textarea>
+      <textarea [ng-focusable]></textarea>
     </span>
   </div>
 
   <div class="btns">
-    <input focusable class="btn cancel" type="button" (click)="click('取消')" value="取消"/>
-    <button focusable class="btn" (click)="click('保存')">保存</button>
+    <input [ng-focusable] class="btn cancel" type="button" (click)="click('取消')" value="取消"/>
+    <button [ng-focusable] class="btn" (click)="click('保存')">保存</button>
   </div>   
 </div>
   `,
@@ -70,7 +59,7 @@ export class Example9Component implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    // $tv.formAutofocus = false; // 表单控件enter，不可以输入和选择
+    // window.$tv.formAutofocus = false; // 表单控件enter，不可以输入和选择
   }
   ngOnDestroy() {
    

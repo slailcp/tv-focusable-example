@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { $tv } from 'ng-tv-focusable';
+
 
 @Component({
   selector: 'app-example7',
@@ -8,7 +8,7 @@ import { $tv } from 'ng-tv-focusable';
   <div class="tv-box">
     <div class="item-box">
       <div class="perspective">
-        <div class="item" focusable *ngFor='let item of list ;let index = index'
+        <div class="item" [ng-focusable] *ngFor='let item of list ;let index = index'
         [ngStyle]="{
           'left': -100 * index - index * 20 +'px',
           'z-index': activeIndex === index ? 1100 :1000 - abs(activeIndex - index) * 5,
@@ -65,11 +65,11 @@ export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     document.body.style.backgroundColor = '#010d19';
-    $tv.distanceToCenter = true;
-    $tv.setScrollEl(document.querySelector('.item-box'))
-    $tv.requestFocus($tv.getElementByPath("//div[@class='perspective']/div[3]"));
+    window.$tv.distanceToCenter = true;
+    window.$tv.setScrollEl(document.querySelector('.item-box'))
+    window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='perspective']/div[3]"));
   }
-  ngOnDestroy() {$tv.resetScrollEl(); }
+  ngOnDestroy() {window.$tv.resetScrollEl(); }
   abs(num){ return Math.abs(num)}
   skip(index){
     if(index === 8) {
@@ -80,7 +80,7 @@ export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
     }
   }
   nofocus(event){
-    $tv.requestFocus(event.target);
+    window.$tv.requestFocus(event.target);
   }
   right(index, event){
     if(index === this.list.length - 1 ){return;}

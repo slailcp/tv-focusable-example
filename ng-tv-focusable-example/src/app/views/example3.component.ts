@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { $tv } from 'ng-tv-focusable';
+
 @Component({
   selector: 'app-example1',
   template: `
@@ -7,7 +7,7 @@ import { $tv } from 'ng-tv-focusable';
     <span 
     *ngFor='let in of counter(30) ;let i = index' 
     [id]="i+1"
-    class="span" focusable 
+    class="span" [ng-focusable] 
     (left)="left(i)" 
     (up)="up(i)" 
     (right)="right(i)" 
@@ -55,28 +55,28 @@ export class Example3Component implements OnInit {
   left(index) {
     if(index === 9) {
       console.log('left');
-      $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   up(index) {
     if(index === 6) {
       console.log('up')
-      $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   right(index) {
     if(index === 10) {
       console.log('right')
-      $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 
   down(index) {
     if(index === 5) {
       console.log('down')
-      $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
     }
   }
 

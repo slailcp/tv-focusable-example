@@ -14,7 +14,15 @@ import { Example7DetailComponent } from './views/example7-detail.component';
 import { Example8Component } from './views/example8.component';
 import { Example9Component } from './views/example9.component';
 
-import { TvFocusableModule } from 'ng-tv-focusable';
+import { TvFocusableModule, $tv } from 'ng-tv-focusable';
+
+declare global {
+  interface Window {
+    $tv: any;
+  }
+}
+
+window.$tv = $tv; // 定义全局变量
 
 
 @NgModule({
