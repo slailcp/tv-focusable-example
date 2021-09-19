@@ -11,17 +11,6 @@
         China
       </span>
     </a-form-item>
-    <a-form-item label="Select" has-feedback>
-      <a-select placeholder="Please select a country" v-focusable>
-        <a-select-option value="china" v-focusable>
-          China
-        </a-select-option>
-        <a-select-option value="usa" v-focusable>
-          U.S.A
-        </a-select-option>
-      </a-select>
-    </a-form-item>
-
     <a-form-item label="弹框选择">
       <span class="ant-form-text inline-block" @click="dialogopen()"  v-focusable>
         {{more}}
@@ -101,7 +90,7 @@
     </a-form-item>
 
     <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
-      <a-button type="primary" html-type="submit" v-focusable>
+      <a-button type="primary" html-type="button" v-focusable>
         Submit
       </a-button>
     </a-form-item>
