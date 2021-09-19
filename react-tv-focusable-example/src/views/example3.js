@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import '../common/public.css';
-import { $tv } from 'react-tv-focusable'
+
 class Example3 extends Component {
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
+        window.$tv.focusableClassName = 'r-focusable'; // 不使用属性的话，需要配置focusableClassName项
         const els = document.getElementsByClassName('r-focusable');
         for (let el of els) {
             // 自定义事件，名称一定要是和下面的名字对应哦
@@ -33,7 +33,7 @@ class Example3 extends Component {
     left(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) === 10) {
-            $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
         }
     }
     longPress(event) {
@@ -53,21 +53,21 @@ class Example3 extends Component {
     right(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) === 11) {
-            $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
         }
     }
     up(event) {
         const index = event.target.getAttribute('index');
         
         if (Number(index) === 7) {
-            console.log($tv.getElementByPath('//div[@class="demo"]/span[18]'))
-            $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            console.log(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
         }
     }
     down(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) === 6) {
-            $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
         }
     }
 

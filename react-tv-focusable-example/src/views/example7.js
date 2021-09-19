@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../common/public.css';
-import { $tv } from 'react-tv-focusable'
+
 
 class Example7 extends Component {
   list = [
@@ -26,11 +26,11 @@ class Example7 extends Component {
   componentDidMount() {
     document.body.style.backgroundColor = '#010d19';
 
-    $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
-    $tv.distanceToCenter = true;
+    window.$tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
+    window.$tv.distanceToCenter = true;
 
-    $tv.setScrollEl(document.querySelector('.item-box'))
-    $tv.requestFocus($tv.getElementByPath("//div[@class='perspective']/div[3]"));
+    window.$tv.setScrollEl(document.querySelector('.item-box'))
+    window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='perspective']/div[3]"));
 
     const els = document.querySelectorAll('.r-focusable');
     for (let el of els) {
@@ -43,9 +43,9 @@ class Example7 extends Component {
   }
   componentWillUnmount() {
     document.body.style.backgroundColor = '#fff';
-    $tv.reset()
+    window.$tv.reset()
   }
-  nofocus(event) { this.$tv.requestFocus(event.target); }
+  nofocus(event) { this.window.$tv.requestFocus(event.target); }
   right(event) {
     const index = Number(event.target.getAttribute('index'));
     if (index === this.list.length - 1) { return; }

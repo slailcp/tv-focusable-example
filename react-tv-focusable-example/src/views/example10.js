@@ -1,24 +1,18 @@
 import React, { Component } from "react";
 import '../common/public.css';
-import { $tv } from 'react-tv-focusable'
+
 import {
   Form,
-  Select,
   InputNumber,
   Input,
   Switch,
   Radio,
-  Slider,
   Button,
-  Upload,
-  Rate,
   Checkbox,
   Row,
   Col,Card 
 } from 'antd';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
-const { Option } = Select;
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -28,15 +22,7 @@ const formItemLayout = {
   },
 };
 
-const normFile = (e) => {
-  console.log('Upload event:', e);
 
-  if (Array.isArray(e)) {
-    return e;
-  }
-
-  return e && e.fileList;
-};
 
 class Example10 extends Component {
   constructor() {
@@ -49,7 +35,7 @@ class Example10 extends Component {
   }
 
   componentDidMount() {
-    $tv.focusableClassName = 'r-focusable';
+    window.$tv.focusableClassName = 'r-focusable';
     document.querySelector('.InputNumber').addEventListener("on-blur", this.numberBlur);
   }
   componentWillUnmount() {  }
@@ -68,18 +54,18 @@ class Example10 extends Component {
       show: true,
       focusEl: document.querySelector('.focus')
     })
-    $tv.limitingEl = document.querySelector('.ex8-dialog'); // 只有.demo5里面的focusable可以获取焦点
-    $tv.scrollEl = $tv.getElementByPath('//div[@class="ex10-content"]');
-    $tv.requestFocus(this.refs.fo5);
+    window.$tv.limitingEl = document.querySelector('.ex8-dialog'); // 只有.demo5里面的focusable可以获取焦点
+    window.$tv.scrollEl = window.$tv.getElementByPath('//div[@class="ex10-content"]');
+    window.$tv.requestFocus(this.refs.fo5);
   }
   close(item) {
     if(item){
       this.setState({ more: item })
     }
     this.setState({ show: false })
-    $tv.scrollEl = null;
-    $tv.limitingEl = null;
-    if (this.state.focusEl) { $tv.requestFocus(this.state.focusEl); }
+    window.$tv.scrollEl = null;
+    window.$tv.limitingEl = null;
+    if (this.state.focusEl) { window.$tv.requestFocus(this.state.focusEl); }
   }
 
 
@@ -203,7 +189,7 @@ class Example10 extends Component {
 
 
         <div className="ex8-dialog" style={{ display: this.state.show ? "block" : "none" }}>
-          <Card className="ex8-dialog-demo" title="请选择" extra={<a className="r-focusable" href="javascript:;" onClick={() => this.close()}>More</a>} style={{ width: 300}}>
+          <Card className="ex8-dialog-demo" title="请选择" extra={<span className="r-focusable" onClick={() => this.close()}>Close</span>} style={{ width: 300}}>
             <div className="ex10-content">
               {lists}
             </div>

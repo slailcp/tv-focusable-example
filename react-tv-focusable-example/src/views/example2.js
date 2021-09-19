@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { $tv } from 'react-tv-focusable'
+
 
 import '../common/public.css';
 
@@ -12,24 +12,24 @@ class Example2 extends Component {
         }
     }
     componentDidMount() {
-        $tv.offsetDistance = 50;
-        $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[9]'))
+        window.$tv.offsetDistance = 50;
+        window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[9]'))
     }
 
 
     skip1() {
         this.setState({ active: 1 })
-        $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[55]'))
+        window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[55]'))
     }
 
     skip2() {
         this.setState({ active: 2 })
-        $tv.requestFocus($tv.getElementByPath('//div[@class="demo"]/span[20]'), false);
+        window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[20]'), false);
     }
     render() {
         let lists = [];
         for (let i = 0; i < 105; i++) {
-            lists.push(<span className="span" focusable ref={'fo' + (i + 1)} key={i}> {i + 1} </span>)
+            lists.push(<span className="span" r-focusable="" ref={'fo' + (i + 1)} key={i}> {i + 1} </span>)
         }
 
         return (

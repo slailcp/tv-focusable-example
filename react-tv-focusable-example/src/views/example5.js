@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../common/public.css';
-import { $tv } from 'react-tv-focusable'
+
 class Example5 extends Component {
     constructor(props) {
         super(props)
@@ -9,21 +9,20 @@ class Example5 extends Component {
         }
     }
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable'; // // 不使用focusable属性的话，必须配置focusableClassName项
-        $tv.setScrollEl($tv.getElementByPath('//div[@class="demo-scroll"]'))
-        $tv.requestFocus($tv.getElementByPath('//div[@class="demo-con"]/span[8]'))
+        window.$tv.setScrollEl(window.$tv.getElementByPath('//div[@class="demo-scroll"]'))
+        window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo-con"]/span[8]'))
     }
     componentWillUnmount() {
-        $tv.reset();
+        window.$tv.reset();
     }
 
     distanceToCenter1() {
         this.setState({ distanceToCenterActive: 1 })
-        $tv.distanceToCenter = false;
+        window.$tv.distanceToCenter = false;
     }
     distanceToCenter2() {
         this.setState({ distanceToCenterActive: 2 })
-        $tv.distanceToCenter = true;
+        window.$tv.distanceToCenter = true;
     }
 
 
@@ -31,7 +30,7 @@ class Example5 extends Component {
         let lists = [];
         for (let i = 0; i < 105; i++) {
             lists.push(<span
-                className="span r-focusable"
+                className="span" r-focusable=""
                 key={i}>{i + 1}</span>)
         }
 

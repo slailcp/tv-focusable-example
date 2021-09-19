@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../common/public.css';
-import { $tv } from 'react-tv-focusable'
+
 
 
 class Example4 extends Component {
@@ -19,25 +19,24 @@ class Example4 extends Component {
 
 
     componentDidMount() {
-        $tv.focusableClassName = 'r-focusable';// // 不使用focusable属性的话，必须配置focusableClassName项
         this.focusclassname1();
     }
 
     componentWillUnmount() {
         // 如果没设置全局配置，可以直接调用reset()方法
-        $tv.reset(); // 将所有的配置项还原成react-tv-focusable的默认配置
+        window.$tv.reset(); // 将所有的配置项还原成react-tv-focusable的默认配置
         /** 
          * 也可以单独重置某个属性，例如
-         * 重置focusClassName  => $tv.resetFocusClassName();或 $tv.focusableClassName = XX;
-         * 重置KEYS =>  $tv.resetKEYS();或 $tv.KEYS  = XX;
-         * 重置initDis =>  $tv.resetInitDis();或 $tv.initDis = XX;
-         * 重置findFocusType =>  $tv.resetFindFocusType();或 $tv.findFocusType = XX;
+         * 重置focusClassName  => window.$tv.resetFocusClassName();或 window.$tv.focusableClassName = XX;
+         * 重置KEYS =>  window.$tv.resetKEYS();或 window.$tv.KEYS  = XX;
+         * 重置initDis =>  window.$tv.resetInitDis();或 window.$tv.initDis = XX;
+         * 重置findFocusType =>  window.$tv.resetFindFocusType();或 window.$tv.findFocusType = XX;
          * */
 
 
         // 如果在app.modules.ts中有全局的配置那么，此处就需要还原成全局配置
         /**
-         $tv.init({
+         window.$tv.init({
             focusClassName: "config-focus", // 聚焦元素的className （默认focus）
             KEYS: {KEY_LEFT: [37], KEY_UP: [38], KEY_RIGHT: [39], KEY_DOWN: [40]}, // 自定义键值
             findFocusType: 1, //找焦点方式 0：直线上 1：最近（默认1） 
@@ -57,13 +56,13 @@ class Example4 extends Component {
      */
     type1() {
         this.setState({ active: 1, disActive: 2 })
-        $tv.findFocusType = 0;
-        $tv.initDis = 29;
+        window.$tv.findFocusType = 0;
+        window.$tv.initDis = 29;
     }
 
     type2() {
         this.setState({ active: 2, disActive: 0 })
-        $tv.findFocusType = 1;// 0：上下左右距离最近的div
+        window.$tv.findFocusType = 1;// 0：上下左右距离最近的div
     }
 
     /**
@@ -75,15 +74,15 @@ class Example4 extends Component {
     dis1() {
         this.setState({ disActive: 1 })
         this.setState({ active: 1 })
-        $tv.findFocusType = 0;
-        $tv.initDis = 30; //  设置大于29的值,就可以让div2获取焦点
+        window.$tv.findFocusType = 0;
+        window.$tv.initDis = 30; //  设置大于29的值,就可以让div2获取焦点
     }
 
     dis2() {
         this.setState({ disActive: 2 })
         this.setState({ active: 1 })
-        $tv.findFocusType = 0;
-        $tv.initDis = 29;//  设置29是找不到div2的
+        window.$tv.findFocusType = 0;
+        window.$tv.initDis = 29;//  设置29是找不到div2的
     }
 
     /**
@@ -96,7 +95,7 @@ class Example4 extends Component {
      */
     keys1() {
         this.setState({ keysActive: 1 })
-        $tv.KEYS = {
+        window.$tv.KEYS = {
             KEY_LEFT: [65, 37], // 65:A  37:←
             KEY_UP: [87, 38], // 87:W  38:↑
             KEY_RIGHT: [68, 39], // 68:D   39:→
@@ -107,7 +106,7 @@ class Example4 extends Component {
 
     keys2() {
         this.setState({ keysActive: 2 })
-        $tv.KEYS = {
+        window.$tv.KEYS = {
             KEY_LEFT: [90], // Z
             KEY_UP: [88], // X
             KEY_RIGHT: [67], // C
@@ -122,45 +121,45 @@ class Example4 extends Component {
     focusclassname1() {
         this.setState({ focusClassNameActive: 1 })
         this.toggleClass(document.getElementsByClassName('ng-focus-rotate')[0], 'ng-focus-rotate')
-        $tv.focusClassName = "ng-focus-scale";
+        window.$tv.focusClassName = "ng-focus-scale";
     }
 
     focusclassname2() {
         this.setState({ focusClassNameActive: 2 })
         this.toggleClass(document.getElementsByClassName('ng-focus-scale')[0], 'ng-focus-scale')
-        $tv.focusClassName = "ng-focus-rotate";
+        window.$tv.focusClassName = "ng-focus-rotate";
     }
 
     offsetDistance1() {
         this.setState({ offsetActive: 1 })
-        $tv.offsetDistance = 50;
+        window.$tv.offsetDistance = 50;
     }
 
     offsetDistance2() {
         this.setState({ offsetActive: 2 })
-        $tv.offsetDistance = 250;
+        window.$tv.offsetDistance = 250;
     }
 
     distanceToCenter1() {
         this.setState({ distanceToCenterActive: 1 })
 
-        $tv.distanceToCenter = false;
+        window.$tv.distanceToCenter = false;
     }
     distanceToCenter2() {
         this.setState({ distanceToCenterActive: 2 })
 
-        $tv.distanceToCenter = true;
+        window.$tv.distanceToCenter = true;
     }
 
     limitingEl1() {
         this.setState({ limitingElActive: 1 })
 
-        $tv.limitingEl = null;
+        window.$tv.limitingEl = null;
     }
     limitingEl2() {
         this.setState({ limitingElActive: 2 })
 
-        $tv.limitingEl = document.querySelector('.demo');
+        window.$tv.limitingEl = document.querySelector('.demo');
     }
 
     toggleClass(el, className) {
@@ -174,7 +173,8 @@ class Example4 extends Component {
         for (let i = 0; i < 105; i++) {
             lists.push(<span
                 onClick={() => this.event(i + 1)}
-                className="span r-focusable"
+                className="span"
+                r-focusable=""
                 key={i}>{i + 1} </span>)
         }
 
@@ -212,8 +212,8 @@ class Example4 extends Component {
                 </div><br />
                 <div>
                     <div className="title">修改limitingEl</div>
-                    <span className={this.state.limitingElActive === 1 ? 'active btn r-focusable' : 'btn r-focusable'} onClick={() => this.limitingEl1()}>limitingEl = null</span>
-                    <span className={this.state.limitingElActive === 2 ? 'active btn r-focusable' : 'btn r-focusable'} onClick={() => this.limitingEl2()}>distanceToCenter = .demo</span>
+                    <span r-focusable="" className={this.state.limitingElActive === 1 ? 'active btn' : 'btn'} onClick={() => this.limitingEl1()}>limitingEl = null</span>
+                    <span r-focusable="" className={this.state.limitingElActive === 2 ? 'active btn' : 'btn'} onClick={() => this.limitingEl2()}>distanceToCenter = .demo</span>
                 </div>
 
                 <div className="demo" style={{ paddingTop: '100px' }}> {lists}</div>

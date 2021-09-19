@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../common/public.css';
-import { $tv } from 'react-tv-focusable'
+
 
 class Example8 extends Component {
   constructor(props) {
@@ -11,9 +11,8 @@ class Example8 extends Component {
     }
   }
   componentDidMount() {
-    // // 必须要配置init的focusableClassName（可以获取焦点的元素classname），否则焦点不生效
-    $tv.focusableClassName = 'r-focusable';// // 不使用focusable属性的话，必须配置focusableClassName项
-    $tv.focusClassName = 'focus123';
+    window.$tv.focusableClassName = 'r-focusable';
+    window.$tv.focusClassName = 'focus123';
     /**
      * 其余可配置可不配置，不做配置的情况下使用react-tv-focusable默认的配置
      */
@@ -24,15 +23,15 @@ class Example8 extends Component {
       show: true,
       focusEl: document.querySelector('.focus123')
     })
-    $tv.limitingEl = document.querySelector('.ex8-dialog'); // 只有.demo5里面的focusable可以获取焦点
-    $tv.scrollEl = $tv.getElementByPath('//div[@class="ex8-dialog-demo"]');
-    $tv.requestFocus(this.refs.fo5);
+    window.$tv.limitingEl = document.querySelector('.ex8-dialog'); // 只有.demo5里面的focusable可以获取焦点
+    window.$tv.scrollEl = window.$tv.getElementByPath('//div[@class="ex8-dialog-demo"]');
+    window.$tv.requestFocus(this.refs.fo5);
   }
   close() {
     this.setState({ show: false })
-    $tv.scrollEl = null;
-    $tv.limitingEl = null;
-    if (this.state.focusEl) { $tv.requestFocus(this.state.focusEl); }
+    window.$tv.scrollEl = null;
+    window.$tv.limitingEl = null;
+    if (this.state.focusEl) { window.$tv.requestFocus(this.state.focusEl); }
 
   }
 
