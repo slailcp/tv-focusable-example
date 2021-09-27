@@ -1,69 +1,102 @@
 <template>
-  <div class="box">
-    <div class="item" v-focusable>a</div>
-    <div class="item" v-focusable @left="left">向左移动触发left事件</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable @right="right">向右移动触发right事件</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable  @up="up">向上移动触发up事件</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable @down="down">向下移动触发down事件</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable @on-blur="blur">移出焦点触发blur事件</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable @on-focus="focus">获取焦点触发focus事件</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-    <div class="item" v-focusable>c</div>
-  </div>
-  
-</template>
-
-<script>
-export default {
-  name: 'App',
-  components: {
+  <div class="focusTest2">
+    <!-- <div v-focusable class="div_item" @left="testLeft($event)" @up="testUp">
+      1
+    </div>
+    <div
+      v-focusable
+      class="div_item"
+      @onBlur="testBlur($event)"
+      @onFocus="testFocus($event)"
+    >
+      2
+    </div>
+    <div v-focusable class="div_item">3</div>
+    <div v-focusable class="div_item">4</div> -->
     
-  },
+    <div v-focusable class="div_item" v-for="(item, index) of data1" :key="index" 
+    @left="testLeft(item,$event)" 
+    @right="testRight(item,$event)" 
+    @up="testUp(item,$event)" 
+    @down="testDown(item,$event)"
+    @long-press="longPress(item,$event)" 
+    @on-focus="testFocus(item,$event)" 
+    @on-blur="testBlur(item,$event)"
+    >
+      {{item}}
+    </div>
+  </div>
+</template>
+<script>
+import { onMounted, reactive, toRefs } from '@vue/runtime-core';
+export default {
+  name: "FocusTest2",
   setup() {
-    const left = () => {
-      alert('left');
+    const testBlur = (item) => {
+      if(item == 'blur'){ console.log('blur');}
     };
-    const right = () => {
-      alert('right');
+    const testFocus = (item) => {
+      if(item == 'focus'){ console.log('focus');}
     };
-    const up = () => {
-      alert('up');
+
+    const testLeft = (item) => {
+      if(item == 'left'){ console.log('left');}
     };
-    const down = () => {
-      alert('down');
+    const testRight = (item) => {
+      if(item == 'right'){ console.log('right');}
     };
-    const focus = () => {
-      alert('focus');
+    
+    const testUp = (item) => {
+      if(item == 'up'){ console.log('up');}
     };
-    const blur = () => {
-      alert('blur');
+    const testDown = (item) => {
+      if(item == 'down'){ console.log('down');}
     };
+
+    const longPress = (item) => {
+      if(item == 'longpress'){ console.log('longpress');}
+    };
+    const state = reactive({
+        data1:[],
+    })
+    onMounted(()=>{
+        setTimeout(()=>{
+            state.data1 = ['right',2,'down',4,1,2,3,'left',1,2,3,'up',1,'blur',3,4,'focus',1,2,4,4,'longpress']
+        },1000)
+    })
     return {
-      left,
-      right,
-      up,
-      down,
-      focus,
-      blur,
+      testBlur,
+      testFocus,
+      testLeft,
+      testRight,
+      testUp,
+      longPress,
+      testDown,
+      ...toRefs(state)
     };
   },
-}
+};
 </script>
+<style scoped>
+.focusTest2 {
+  width: 660px;
+  background: antiquewhite;
+}
+.div_item {
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+  margin: 10px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
 
-<style>
-.box{width: 700px;margin:20px auto}
-.item{display:inline-block;width:100px;height:100px;background-color: gray;margin-right:30px;margin-bottom:30px;transition: .2s all;}
-.focus{color:#fff;transform: scale(1.2);}
+.focus {
+  box-sizing: border-box;
+  border: 2px solid #000000;
+  transition: all 0.2s ease;
+  border-radius: 0.2rem;
+  z-index: 100;
+}
 </style>
