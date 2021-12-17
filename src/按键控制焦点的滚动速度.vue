@@ -14,21 +14,21 @@ export default {
   setup() {
     const state = reactive({
       dif: 0,
-      time: 500, // 毫秒
+      time: 500, // 500毫秒滚动一次
     });
     const { proxy } = getCurrentInstance();
     onMounted(() => {
-      proxy.$tv.scrollEl = document.querySelector('.focusTest2')
+      proxy.$tv.scrollEl = document.querySelector('.focusTest2');
     });
-    const testUp = () => {
+    const testUp = () => { // 按上建
       var now = Date.now();
-      if (now - state.dif < 500) {
-        proxy.$tv.requestFocus(event.target);
+      if (now - state.dif < state.time) { // 获取时间间隔，如果小于500毫秒，就不让滚动
+        proxy.$tv.requestFocus(event.target); // 当前自身获取焦点。
         return;
       }
-      state.dif = now;
+      state.dif = now; // 如果时间间隔大于500毫秒，更新state.dif 的值，接着查找下一个焦点。
     };
-    const testDown = (event) => {
+    const testDown = (event) => { // 按下键盘同理
       var now = Date.now();
       if (now - state.dif < state.time) {
         proxy.$tv.requestFocus(event.target);
