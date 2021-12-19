@@ -19,6 +19,7 @@ export default {
     const { proxy } = getCurrentInstance();
     onMounted(() => {
       proxy.$tv.scrollEl = document.querySelector('.focusTest2');
+      // 或者下载vue-tv-focusable@1.0.6或其以上版本，使用proxy.$tv.scrollSpeed = 500控制移动速度；使用scrollSpeed就不需要额外再写任何多余的交互了
     });
     const testUp = () => { // 按上建
       var now = Date.now();
