@@ -38,7 +38,7 @@ class Example10 extends Component {
     window.$tv.focusableClassName = 'r-focusable';
     document.querySelector('.InputNumber').addEventListener("on-blur", this.numberBlur);
   }
-  componentWillUnmount() {  }
+ 
 
   // 获取焦点
   numberClick(){
