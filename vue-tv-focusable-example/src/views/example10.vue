@@ -1,5 +1,6 @@
 <template>
   <div class="form">
+    <h2>表单输入:需要按ok键输入内容</h2>
     <div class="group">
       <span class="key">姓名</span>
       <span class="value"><input class="text" type="text" v-focusable/></span>

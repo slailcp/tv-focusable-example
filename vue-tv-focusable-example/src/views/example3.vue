@@ -3,13 +3,13 @@
     <div>
       <div>修改distanceToCenter</div>
       <span
-        class="btn"
+        class="btn" v-focusable
         :class="distanceToCenterActive === 1 ? 'active' : ''"
         @click="distanceToCenter1(1)"
         >distanceToCenter = false</span
       >
       <span
-        class="btn"
+        class="btn" v-focusable
         :class="distanceToCenterActive === 2 ? 'active' : ''"
         @click="distanceToCenter2(2)"
         >distanceToCenter = true</span
@@ -81,7 +81,7 @@ export default {
 }
 .demo {
   background: gray;
-  margin: 100px auto;
+  margin: 100px 0;
   width: 600px;
   height: 400px;
   position: relative;

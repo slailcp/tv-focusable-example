@@ -263,7 +263,6 @@ export default {
   background: red;
 }
 .demo {
-  margin: 0 auto;
   width: 600px;
   position: relative;
   .focus-item {

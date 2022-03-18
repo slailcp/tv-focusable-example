@@ -1,5 +1,6 @@
 <template>
   <div style="width:500px">
+    <h2>表单输入:需要按ok键输入内容</h2>
     <a-form
     id="components-form-demo-validate-other"
     :form="form"

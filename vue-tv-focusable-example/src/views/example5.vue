@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="position: relative; width: 500px; margin: 100px auto">
+    <div style="position: relative; width: 500px; margin: 100px 0">
       <div
         ref="aa"
         style="position: absolute; top: 0; left: 0"

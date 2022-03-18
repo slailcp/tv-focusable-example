@@ -26,7 +26,7 @@
       "
     >
       <div class="demo demo5">
-        <span class="close" v-focusable @click="close()"
+        <span class="close" v-focusable @click="close()" style="margin:20px auto"
           >click close dialog</span
         >
         <span v-for="index in 15" :key="index" class="item" v-focusable>
@@ -105,7 +105,6 @@ export default {
 
 <style lang="less" scoped>
 .demo {
-  margin: 0 auto;
   width: 600px;
   .item {
     width: 100px;
@@ -128,6 +127,7 @@ export default {
   overflow: hidden;
   background: #fff;
   margin-top: 100px;
+  margin-left: 200px;
   .item {
     &:nth-of-type(2) {
       position: relative;
@@ -153,7 +153,7 @@ export default {
   width: 150px;
   line-height: 40px;
   padding: 0 20px;
-  margin: 20px auto;
+  margin: 20px 0;
   border: 0;
   background: gray;
   &.focus123 {

@@ -1,5 +1,6 @@
 <template>
   <div style="width:500px">
+    <h2>表单输入:需要按ok键输入内容</h2>
     <el-form ref="form" :model="form" label-width="140px">
       <el-form-item label="活动名称">
         <span v-focusable @click="numberClick()" @on-blur="numberblur()" class="inline-block"><el-input v-model="form.name"></el-input></span>
@@ -28,8 +29,8 @@
 
       <el-form-item label="element选择radio">
         <el-radio-group v-model="form.resource">
-          <el-radio v-focusable label="线上品牌商赞助"></el-radio>
-          <el-radio v-focusable label="线下场地免费"></el-radio>
+          <el-radio v-focusable label="线上品牌"></el-radio>
+          <el-radio v-focusable label="按键盘会自动聚焦,不需要按ok"></el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="活动形式">

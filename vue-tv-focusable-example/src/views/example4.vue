@@ -2,12 +2,12 @@
   <div>
     <div>
       <div>ie上不可以使用getElementByPath获取el哦</div>
-      <span class="btn" :class="active === 1 ? 'active' : ''" @click="skip1"
+      <span class="btn" :class="active === 1 ? 'active' : ''" @click="skip1" v-focusable
         >动效跳到第35个div</span
       >
       <br />
       <br />
-      <span class="btn" :class="active === 2 ? 'active' : ''" @click="skip2"
+      <span class="btn" :class="active === 2 ? 'active' : ''" @click="skip2" v-focusable
         >没有动效跳到第50个div</span
       >
     </div>
@@ -72,7 +72,6 @@ export default {
   background: red;
 }
 .demo {
-  margin: 0 auto;
   width: 600px;
   position: relative;
   .focus-item {
