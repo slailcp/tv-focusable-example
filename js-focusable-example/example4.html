@@ -99,43 +99,53 @@
     //////////边界处理（根据具体需求来）///////////////
     function menuUp(i, event) {//在第一个menu按上，焦点不动
         if (i == 1) {
-            tvCore.requestFocus(event.target);
+            tvCore.next(event.target);
+        }else{
+            tvCore.next("up")
         }
     }
     function menuDown(i, event) {//在最下面一个menu按下，焦点不动，避免右边内容item自动聚焦
         if (i == menuCount) {
-            tvCore.requestFocus(event.target);
+            tvCore.next(event.target);
+        }else{
+            tvCore.next("down")
         }
     }
     function menuRight() { //从menu到内容时固定到内容的第一个元素
-        tvCore.requestFocus(tvCore.getElementByPath("//div[@class='content']/div[1]"), false);
+        tvCore.next(tvCore.getElementByPath("//div[@class='content']/div[1]"), false);
     }
 
     function contentDown(index, event) {
         if (contentCount - index < 3) {//如果是最后一行的内容,按下焦点不许动
-            tvCore.requestFocus(event.target);
+            tvCore.next(event.target);
+        }else{
+            tvCore.next("down")
         }
     }
 
     function contentLeft(i) {
         if (i % 3 == 1) {//在第一列的内容上按左时，让当前menu的item聚焦
             console.log(currentMenu);
-            tvCore.requestFocus(tvCore.getElementByPath(`//div[@class='menu']/div[${currentMenu}]`), false);
+            tvCore.next(tvCore.getElementByPath(`//div[@class='menu']/div[${currentMenu}]`), false);
+        }else{
+            tvCore.next("left")
         }
     }
     function contentUp(index, event) {
         if (index <= 3) {
-            tvCore.requestFocus(event.target);
+            tvCore.next(event.target);
+        }else{
+            tvCore.next("up")
         }
     }
     //////////边界处理结束///////////////
 
     function setMenuListener() {
         document.querySelectorAll('.m-item').forEach((item, i) => {
-            item.addEventListener('onFocus', function () { menuFocus(i + 1) });
-            item.addEventListener('up', function (e) { menuUp(i + 1, e) });
-            item.addEventListener('down', function (e) { menuDown(i + 1, e) });
-            item.addEventListener('right', menuRight);
+            tvCore.addFocusableListener(item,'onFocus', function () { menuFocus(i + 1) });
+            tvCore.addFocusableListener(item,'up', function (e) { menuUp(i + 1, e) });
+            tvCore.addFocusableListener(item,'down', function (e) { menuDown(i + 1, e) });
+            tvCore.addFocusableListener(item,'right', menuRight);
         });
     }
     setMenuListener()
@@ -146,10 +156,10 @@
         $div.style.backgroundColor = colors[currentMenu % 3];
         $div.setAttribute('class', 'item');
         $div.setAttribute('focusable', '');
-        $div.addEventListener('onFocus', contentFocus);
-        $div.addEventListener('up', function (e) { contentUp(i + 1, e) });
-        $div.addEventListener('down', function (e) { contentDown(i + 1, e) });
-        $div.addEventListener('left', function () { contentLeft(i + 1) });
+        tvCore.addFocusableListener($div,'onFocus', contentFocus);
+        tvCore.addFocusableListener($div,'up', function (e) { contentUp(i + 1, e) });
+        tvCore.addFocusableListener($div,'down', function (e) { contentDown(i + 1, e) });
+        tvCore.addFocusableListener($div,'left', function () { contentLeft(i + 1) });
         $div.innerHTML = `${currentMenu}-${i + 1}`;
         document.querySelector('.content').appendChild($div)
     }
