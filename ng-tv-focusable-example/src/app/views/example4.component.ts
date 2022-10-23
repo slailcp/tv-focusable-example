@@ -1,5 +1,5 @@
 import { Component, OnDestroy, AfterViewInit } from '@angular/core';
-
+import { $tv } from "ng-tv-focusable"
 
 @Component({
   selector: 'app-example3',
@@ -81,8 +81,8 @@ import { Component, OnDestroy, AfterViewInit } from '@angular/core';
 export class Example4Component implements OnDestroy, AfterViewInit {
   private active = 2;
   private disActive = 0;
-  private keysActive =  1;
-  private focusClassNameActive =  1;
+  private keysActive = 1;
+  private focusClassNameActive = 1;
   private offsetDistanceActive = 1;
   private distanceToCenterActive = 1;
   private limitingElActive = 1;
@@ -99,29 +99,30 @@ export class Example4Component implements OnDestroy, AfterViewInit {
      * 重置KEYS =>  window.$tv.resetKEYS();
      * 重置initDis =>  window.$tv.resetInitDis();
      * 重置findFocusType =>  window.$tv.resetFindFocusType();
-     * */ 
-    
+     * */
 
-     // 如果在app.modules.ts中有全局的配置那么，此处就需要还原成全局配置
-     /**
-      window.$tv.init({
-        focusClassName: "config-focus", // 聚焦元素的className （默认focus）
-        KEYS: {KEY_LEFT: [37], KEY_UP: [38], KEY_RIGHT: [39], KEY_DOWN: [40]}, // 自定义键值
-        findFocusType: 1, //找焦点方式 0：直线上 1：最近（默认1） 
-        initDis: 20 // 只有当findFocusType为0时才会生效，直线类型找焦点时，按键方向的交叉轴方向允许的最大找焦点范围,（默认20px）
-      })
-      */
+
+    // 如果在app.modules.ts中有全局的配置那么，此处就需要还原成全局配置
+    /**
+     window.$tv.init({
+       focusClassName: "config-focus", // 聚焦元素的className （默认focus）
+       KEYS: {KEY_LEFT: [37], KEY_UP: [38], KEY_RIGHT: [39], KEY_DOWN: [40]}, // 自定义键值
+       findFocusType: 1, //找焦点方式 0：直线上 1：最近（默认1） 
+       initDis: 20 // 只有当findFocusType为0时才会生效，直线类型找焦点时，按键方向的交叉轴方向允许的最大找焦点范围,（默认20px）
+     })
+     */
   }
 
 
   event(type, index) {
-    if(index === 8) {
-      if(type === 'left' ) {console.log('left');}
-      if(type === 'up' ) {console.log('up');}
-      if(type === 'right' ) {console.log('right');}
-      if(type === 'down' ) {console.log('down');}
-      if(type === 'enter' ) {console.log('enter');}
+    if (index === 8) {
+      if (type === 'left') { console.log('left'); }
+      if (type === 'up') { console.log('up'); }
+      if (type === 'right') { console.log('right'); }
+      if (type === 'down') { console.log('down'); }
+      if (type === 'enter') { console.log('enter'); }
     }
+    $tv.next(type)
   }
 
   /**
@@ -148,7 +149,7 @@ export class Example4Component implements OnDestroy, AfterViewInit {
    * 设置initDis的前提是findFocusType为0
    * div2偏离水平线30个像素，initDis设置29是找不到div2的，此时可以设置大于29的值,就可以让div2获取焦点
   */
-  dis(type,num) {
+  dis(type, num) {
     this.disActive = type;
     this.active = 1;
     window.$tv.findFocusType = 0;
@@ -235,9 +236,9 @@ export class Example4Component implements OnDestroy, AfterViewInit {
   }
 
 
-  
-  toggleClass(el, className){
-    if(!el) {return;}
+
+  toggleClass(el, className) {
+    if (!el) { return; }
     return el.classList.toggle(className)
   };
 

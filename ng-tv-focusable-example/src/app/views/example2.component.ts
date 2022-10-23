@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-
+import { $tv } from "ng-tv-focusable"
 @Component({
   selector: 'app-example1',
   template: `
@@ -37,27 +37,32 @@ export class Example2Component implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
+    // $tv.scrollSpeed = 300;
   }
 
   ngAfterViewInit() {
     // 默认选中demo下的第10个div
-    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[1]'))
+    $tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[1]'))
   }
   counter(i: number) {
     return new Array(i);
   }
   down(index) {
-    if(index === 2) {
-      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[30]'))
+    if (index === 2) {
+      setTimeout(() => {
+        $tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[30]'))
+      }, 1000)
+    } else {
+      $tv.next("down")
     }
   }
   skip1() {
     this.active = 1;
-    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[40]'))
+    window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[40]'))
   }
 
   skip2() {
     this.active = 2;
-    window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[41]'), false);
+    window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[41]'), false);
   }
 }

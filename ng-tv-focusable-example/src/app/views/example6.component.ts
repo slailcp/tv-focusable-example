@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { $tv } from "ng-tv-focusable"
 
 
 @Component({
@@ -104,36 +105,46 @@ export class Example6Component implements OnInit, OnDestroy, AfterViewInit {
 
   menuUp(i, event) {//在第一个menu按上，焦点不动
     if (i == 1) {
-      window.$tv.requestFocus(event.target);
+      window.$tv.next(event.target);
+    } else {
+      $tv.next("up")
     }
   }
 
   menuDown(i, event) {//在最下面一个menu按下，焦点不动，避免右边内容item自动聚焦
     if (i == 10) {
-      window.$tv.requestFocus(event.target);
+      window.$tv.next(event.target);
+    } else {
+      $tv.next("down")
     }
   }
 
   menuRight() {//从menu到内容时固定到内容的第一个元素
-    window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='content']/div[1]"), false);
+    window.$tv.next(window.$tv.getElementByPath("//div[@class='content']/div[1]"), false);
   }
 
   contentDown(index, event) {
     if (this.contentCount - index < 3) {//如果是最后一行的内容,按下焦点不许动
-      window.$tv.requestFocus(event.target);
+      window.$tv.next(event.target);
+    } else {
+      $tv.next("down")
     }
   }
 
   contentLeft(i) {
     if (i % 3 == 1) {//在第一列的内容上按左时，让当前menu的item聚焦
       console.log(this.currentMenu);
-      
-      window.$tv.requestFocus(window.$tv.getElementByPath(`//div[@class='menu']/div[${this.currentMenu}]`), false);
+
+      window.$tv.next(window.$tv.getElementByPath(`//div[@class='menu']/div[${this.currentMenu}]`), false);
+    } else {
+      $tv.next("left")
     }
   }
-  contentUp(index, event){
-    if (index<=3) {
-      window.$tv.requestFocus(event.target);
-    }
-  }
+  contentUp(index, event) {
+    if (index <= 3) {
+      window.$tv.next(event.target);
+    } else {
+      $tv.next("up")
+    }
+  }
 }

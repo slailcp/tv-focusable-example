@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { $tv } from "ng-tv-focusable"
 
 @Component({
   selector: 'app-example1',
@@ -55,28 +56,36 @@ export class Example3Component implements OnInit {
   left(index) {
     if(index === 9) {
       console.log('left');
-      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+    } else {
+      $tv.next("left")
     }
   }
 
   up(index) {
     if(index === 6) {
       console.log('up')
-      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+    } else {
+      $tv.next("up")
     }
   }
 
   right(index) {
     if(index === 10) {
       console.log('right')
-      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+    } else {
+      $tv.next("right")
     }
   }
 
   down(index) {
     if(index === 5) {
       console.log('down')
-      window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+      window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+    } else {
+      $tv.next("down")
     }
   }
 

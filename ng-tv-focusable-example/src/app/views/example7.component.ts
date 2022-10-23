@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { $tv } from "ng-tv-focusable"
 
 
 @Component({
@@ -44,22 +45,22 @@ import { Router } from '@angular/router';
   `]
 })
 export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
-      constructor(public router:Router) {
+  constructor(public router: Router) {
 
-      }
-      loadingShow = false
-      activeIndex = 2
-      list = [
-        {url:("../../assets/tv/r-1.jpg"), title:'灰姑娘1'},
-        {url:("../../assets/tv/r-2.jpg"), title:'灰姑娘2'},
-        {url:("../../assets/tv/r-3.jpg"), title:'灰姑娘3'},
-        {url:("../../assets/tv/r-4.jpg"), title:'灰姑娘4'},
-        {url:("../../assets/tv/r-5.jpg"), title:'灰姑娘5'},
-        {url:("../../assets/tv/r-6.jpg"), title:'灰姑娘6'},
-        {url:("../../assets/tv/r-7.jpg"), title:'灰姑娘7'},
-        {url:("../../assets/tv/r-8.jpg"), title:'灰姑娘8'},
-        {url:("../../assets/tv/r-9.jpg"), title:'灰姑娘9'},
-      ]
+  }
+  loadingShow = false
+  activeIndex = 2
+  list = [
+    { url: ("../../assets/tv/r-1.jpg"), title: '灰姑娘1' },
+    { url: ("../../assets/tv/r-2.jpg"), title: '灰姑娘2' },
+    { url: ("../../assets/tv/r-3.jpg"), title: '灰姑娘3' },
+    { url: ("../../assets/tv/r-4.jpg"), title: '灰姑娘4' },
+    { url: ("../../assets/tv/r-5.jpg"), title: '灰姑娘5' },
+    { url: ("../../assets/tv/r-6.jpg"), title: '灰姑娘6' },
+    { url: ("../../assets/tv/r-7.jpg"), title: '灰姑娘7' },
+    { url: ("../../assets/tv/r-8.jpg"), title: '灰姑娘8' },
+    { url: ("../../assets/tv/r-9.jpg"), title: '灰姑娘9' },
+  ]
 
   ngOnInit() { }
 
@@ -69,25 +70,30 @@ export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
     window.$tv.setScrollEl(document.querySelector('.item-box'))
     window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='perspective']/div[3]"));
   }
-  ngOnDestroy() {window.$tv.resetScrollEl(); }
-  abs(num){ return Math.abs(num)}
-  skip(index){
-    if(index === 8) {
+  ngOnDestroy() { window.$tv.resetScrollEl(); }
+  abs(num) { return Math.abs(num) }
+  skip(index) {
+    if (index === 8) {
       this.loadingShow = true;
       setTimeout(() => {
         this.router.navigate(['example7-detail']);
-      },1000)
+      }, 1000)
     }
   }
-  nofocus(event){
+  nofocus(event) {
     window.$tv.requestFocus(event.target);
   }
-  right(index, event){
-    if(index === this.list.length - 1 ){return;}
+  right(index, event) {
+    if (index === this.list.length - 1) {
+      $tv.next("right");
+      return;
+    }
     this.activeIndex = index + 1;
+    $tv.next("right")
   }
-  left(index,event){
-    if(index === 0 ){return; }
+  left(index, event) {
+    if (index === 0) { $tv.next("left"); return; }
     this.activeIndex = index - 1;
+    $tv.next("left")
   }
 }
