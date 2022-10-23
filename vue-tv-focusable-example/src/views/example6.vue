@@ -42,7 +42,7 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      this.$tv.requestFocus(
+      this.$tv.next(
         this.$tv.getElementByPath(
           '//div[@class="demo"]/div[@class="menu"]/div[1]'
         )
@@ -70,20 +70,24 @@ export default {
     menuUp(i, event) {
       //在第一个menu按上，焦点不动
       if (i == 1) {
-        this.$tv.requestFocus(event.target);
+        this.$tv.next(event.target);
+      }else{
+        this.$tv.next("up")
       }
     },
 
     menuDown(i, event) {
       //在最下面一个menu按下，焦点不动，避免右边内容item自动聚焦
       if (i == 10) {
-        this.$tv.requestFocus(event.target);
+        this.$tv.next(event.target);
+      }else{
+        this.$tv.next("down")
       }
     },
 
     menuRight() {
       //从menu到内容时固定到内容的第一个元素
-      this.$tv.requestFocus(
+      this.$tv.next(
         this.$tv.getElementByPath("//div[@class='content']/div[1]"),
         false
       );
@@ -92,24 +96,30 @@ export default {
     contentDown(index, event) {
       if (this.contentCount - index < 3) {
         //如果是最后一行的内容,按下焦点不许动
-        this.$tv.requestFocus(event.target);
+        this.$tv.next(event.target);
+      }else{
+        this.$tv.next("down")
       }
     },
 
     contentLeft(i) {
       if (i % 3 == 1) {
         //在第一列的内容上按左时，让当前menu的item聚焦
-        this.$tv.requestFocus(
+        this.$tv.next(
           this.$tv.getElementByPath(
             `//div[@class='menu']/div[${this.currentMenu}]`
           ),
           false
         );
+      }else{
+        this.$tv.next("left")
       }
     },
     contentUp(index, event) {
       if (index <= 3) {
-        this.$tv.requestFocus(event.target);
+        this.$tv.next(event.target);
+      }else{
+        this.$tv.next("up")
       }
     },
   },

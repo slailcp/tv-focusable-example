@@ -74,7 +74,7 @@ export default {
   },
   destroyed() {
     document.body.style.backgroundColor = "#fff";
-    this.$tv.reset()
+    this.$tv.reset();
   },
   methods: {
     skip(index) {
@@ -90,15 +90,18 @@ export default {
     },
     right(index, event) {
       if (index === this.list.length - 1) {
+        this.$tv.next("right");
         return;
       }
-
+      this.$tv.next("right");
       this.activeIndex = index + 1;
     },
     left(index, event) {
       if (index === 0) {
+        this.$tv.next("left");
         return;
       }
+      this.$tv.next("left");
       this.activeIndex = index - 1;
     },
   },

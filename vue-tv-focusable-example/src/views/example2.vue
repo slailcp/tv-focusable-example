@@ -173,6 +173,7 @@ export default {
           console.log("enter");
         }
       }
+      this.$tv.next(type);
     },
     offset1() {
       this.offsetActive = 1;

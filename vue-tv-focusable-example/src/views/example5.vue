@@ -325,7 +325,7 @@ export default {
   name: "Example5",
   created() {
     this.$nextTick(() => {
-      this.$tv.requestFocus(this.$refs.div777, false);
+      this.$tv.next(this.$refs.div777, false);
     });
   },
   methods: {
@@ -333,19 +333,19 @@ export default {
       this.$router.push({ path: "/example3" });
     },
     left() {
-      this.$tv.requestFocus(this.$refs.ii);
+      this.$tv.next(this.$refs.ii);
       console.log("左");
     },
     right() {
-      this.$tv.requestFocus(this.$refs.dd);
+      this.$tv.next(this.$refs.dd);
       console.log("右");
     },
     up() {
-      this.$tv.requestFocus(this.$refs.ff);
+      this.$tv.next(this.$refs.ff);
       console.log("上");
     },
     down() {
-      this.$tv.requestFocus(this.$refs.v55);
+      this.$tv.next(this.$refs.v55);
       console.log("下");
     },
   },

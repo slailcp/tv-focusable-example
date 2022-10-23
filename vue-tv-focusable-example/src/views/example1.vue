@@ -8,7 +8,7 @@
       <div class="focus-item" v-focusable @click="showDialog">
         5<br />(点击enter有弹出层)
       </div>
-      <div class="focus-item" v-focusable @onBlur="blur">6  blur</div>
+      <div class="focus-item" v-focusable @onBlur="blur">6 blur</div>
       <div class="focus-item" v-focusable>7</div>
       <div class="focus-item" v-focusable @up="up(8)">8-up</div>
       <div class="focus-item" v-focusable>9</div>
@@ -48,21 +48,24 @@ export default {
     focus() {
       console.log("focus");
     },
-    blur(){
+    blur() {
       console.log("blur");
     },
     left(index) {
       console.log("左");
+      this.$tv.next("left");
     },
     right(index) {
       console.log("右");
+      this.$tv.next("right");
     },
     up(index) {
       console.log("上");
+      this.$tv.next("up");
     },
     down(index) {
       console.log("下");
-      alert("下");
+      this.$tv.next("down");
     },
     enter(index) {
       // 按enter键，触发click
