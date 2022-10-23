@@ -18,16 +18,16 @@ class Example6 extends Component {
         const menuItemels = document.getElementsByClassName('menu-item');
         const conItemels = document.getElementsByClassName('content-item');
         for (let el of menuItemels) {
-            el.addEventListener("right", this.menuRight.bind(this));
-            el.addEventListener("up", this.menuUp.bind(this));
-            el.addEventListener("down", this.menuDown.bind(this));
-            el.addEventListener("onFocus", this.menuFocus.bind(this));
+            window.$tv.addFocusableListener(el,"right", this.menuRight.bind(this));
+            window.$tv.addFocusableListener(el,"up", this.menuUp.bind(this));
+            window.$tv.addFocusableListener(el,"down", this.menuDown.bind(this));
+            window.$tv.addFocusableListener(el,"onFocus", this.menuFocus.bind(this));
         }
         for (let el of conItemels) {
-            el.addEventListener("left", this.contentLeft.bind(this));
-            el.addEventListener("up", this.contentUp.bind(this));
-            el.addEventListener("down", this.contentDown.bind(this));
-            el.addEventListener("onFocus", this.contentFocus);
+            window.$tv.addFocusableListener(el,"left", this.contentLeft.bind(this));
+            window.$tv.addFocusableListener(el,"up", this.contentUp.bind(this));
+            window.$tv.addFocusableListener(el,"down", this.contentDown.bind(this));
+            window.$tv.addFocusableListener(el,"onFocus", this.contentFocus);
         }
     }
     componentWillUnmount() {
@@ -49,38 +49,48 @@ class Example6 extends Component {
     menuUp(event) {//在第一个menu按上，焦点不动
         const i = event.target.getAttribute('index');
         if (Number(i) === 1) {
-            window.$tv.requestFocus(event.target);
+            window.$tv.next(event.target);
+        }else{
+            window.$tv.next("up")
         }
     }
 
     menuDown(event) {//在最下面一个menu按下，焦点不动，避免右边内容item自动聚焦
         const i = event.target.getAttribute('index');
         if (Number(i) === 10) {
-            window.$tv.requestFocus(event.target);
+            window.$tv.next(event.target);
+        }else{
+            window.$tv.next("down")
         }
     }
 
     menuRight() {//从menu到内容时固定到内容的第一个元素
-        window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='content']/div[1]"), false);
+        window.$tv.next(window.$tv.getElementByPath("//div[@class='content']/div[1]"), false);
     }
 
     contentDown(event) {
         const index = event.target.getAttribute('index');
         if (this.contentCount - Number(index) < 3) {//如果是最后一行的内容,按下焦点不许动
-            window.$tv.requestFocus(event.target);
+            window.$tv.next(event.target);
+        }else{
+            window.$tv.next("down")
         }
     }
 
     contentLeft(event) {
         const i = event.target.getAttribute('index');
         if (Number(i) % 3 === 1) {//在第一列的内容上按左时，让当前menu的item聚焦
-            window.$tv.requestFocus(window.$tv.getElementByPath(`//div[@class='menu']/div[${this.state.currentMenu}]`), false);
+            window.$tv.next(window.$tv.getElementByPath(`//div[@class='menu']/div[${this.state.currentMenu}]`), false);
+        }else{
+            window.$tv.next("left")
         }
     }
     contentUp(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) <= 3) {
-            window.$tv.requestFocus(event.target);
+            window.$tv.next(event.target);
+        }else{
+            window.$tv.next("up")
         }
     }
 

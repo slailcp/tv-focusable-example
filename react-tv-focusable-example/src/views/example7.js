@@ -34,11 +34,11 @@ class Example7 extends Component {
 
     const els = document.querySelectorAll('.r-focusable');
     for (let el of els) {
-      el.addEventListener("right", this.right.bind(this));
-      el.addEventListener("left", this.left.bind(this));
+      window.$tv.addFocusableListener(el,"right", this.right.bind(this));
+      window.$tv.addFocusableListener(el,"left", this.left.bind(this));
 
-      el.addEventListener("up", this.nofocus.bind(this));
-      el.addEventListener("down", this.nofocus.bind(this));
+      window.$tv.addFocusableListener(el,"up", this.nofocus.bind(this));
+      window.$tv.addFocusableListener(el,"down", this.nofocus.bind(this));
     }
   }
   componentWillUnmount() {
@@ -48,12 +48,20 @@ class Example7 extends Component {
   nofocus(event) { this.window.$tv.requestFocus(event.target); }
   right(event) {
     const index = Number(event.target.getAttribute('index'));
-    if (index === this.list.length - 1) { return; }
+    if (index === this.list.length - 1) { 
+      window.$tv.next("right")
+      return; 
+    }
+    window.$tv.next("right")
     this.setState({ activeIndex: index + 1 })
   }
   left(event) {
     const index = Number(event.target.getAttribute('index'));
-    if (index === 0) { return; }
+    if (index === 0) { 
+      window.$tv.next("left")
+      return; 
+    }
+    window.$tv.next("left")
     this.setState({ activeIndex: index - 1 })
   }
 

@@ -36,7 +36,7 @@ class Example10 extends Component {
 
   componentDidMount() {
     window.$tv.focusableClassName = 'r-focusable';
-    document.querySelector('.InputNumber').addEventListener("on-blur", this.numberBlur);
+    window.$tv.addFocusableListener(document.querySelector('.InputNumber'),"on-blur", this.numberBlur);
   }
  
 
@@ -46,6 +46,7 @@ class Example10 extends Component {
   }
   // 失去焦点
   numberBlur(){
+    console.log("blur")
     document.querySelector('.focus input').blur()
   }
 

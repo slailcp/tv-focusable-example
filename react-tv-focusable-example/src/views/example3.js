@@ -7,33 +7,35 @@ class Example3 extends Component {
         const els = document.getElementsByClassName('r-focusable');
         for (let el of els) {
             // 自定义事件，名称一定要是和下面的名字对应哦
-            el.addEventListener("left", this.left);
-            el.addEventListener("right", this.right);
-            el.addEventListener("up", this.up);
-            el.addEventListener("down", this.down);
-            el.addEventListener("onBlur", this.blur);
-            el.addEventListener("onFocus", this.focus);
-            el.addEventListener("longPress", this.longPress);
+            window.$tv.addFocusableListener(el,"left", this.left);
+            window.$tv.addFocusableListener(el,"right", this.right);
+            window.$tv.addFocusableListener(el,"up", this.up);
+            window.$tv.addFocusableListener(el,"down", this.down);
+            window.$tv.addFocusableListener(el,"onBlur", this.blur);
+            window.$tv.addFocusableListener(el,"onFocus", this.focus);
+            window.$tv.addFocusableListener(el,"longPress", this.longPress);
         }
     }
 
     componentWillUnmount() {
         const els = document.getElementsByClassName('r-focusable');
         for (let el of els) {
-            el.removeEventListener("left", this.left);
-            el.removeEventListener("right", this.right);
-            el.removeEventListener("up", this.up);
-            el.removeEventListener("down", this.down);
-            el.removeEventListener("onBlur", this.blur);
-            el.removeEventListener("onFocus", this.focus);
-            el.removeEventListener("longPress", this.longPress);
+            window.$tv.removeFocusableListener(el,"left", this.left);
+            window.$tv.removeFocusableListener(el,"right", this.right);
+            window.$tv.removeFocusableListener(el,"up", this.up);
+            window.$tv.removeFocusableListener(el,"down", this.down);
+            window.$tv.removeFocusableListener(el,"onBlur", this.blur);
+            window.$tv.removeFocusableListener(el,"onFocus", this.focus);
+            window.$tv.removeFocusableListener(el,"longPress", this.longPress);
         }
     }
 
     left(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) === 10) {
-            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+        }else{
+            window.$tv.next("left")
         }
     }
     longPress(event) {
@@ -53,7 +55,9 @@ class Example3 extends Component {
     right(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) === 11) {
-            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+        }else{
+            window.$tv.next("right")
         }
     }
     up(event) {
@@ -61,13 +65,17 @@ class Example3 extends Component {
         
         if (Number(index) === 7) {
             console.log(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
-            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+        }else{
+            window.$tv.next("up")
         }
     }
     down(event) {
         const index = event.target.getAttribute('index');
         if (Number(index) === 6) {
-            window.$tv.requestFocus(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+            window.$tv.next(window.$tv.getElementByPath('//div[@class="demo"]/span[18]'))
+        }else{
+            window.$tv.next("down")
         }
     }
 
