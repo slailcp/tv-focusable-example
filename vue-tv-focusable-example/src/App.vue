@@ -1,25 +1,27 @@
 <template>
   <div id="app">
     <div class="nav-box">
-      <div class="nav-item" v-focusable @click="go('/')">是否可聚焦</div>
-      <div class="nav-item" v-focusable @click="go('/Example1')">
+      <router-link class="nav-item" v-focusable to='/'>是否可聚焦</router-link>
+      <router-link class="nav-item" v-focusable to='/Example1'>
         按键事件
         left|up|right
         |down|enter
-      </div>
-      <div class="nav-item" v-focusable @click="go('/Example2')">自定义配置</div>
-      <div class="nav-item" v-focusable @click="go('/Example3')">滚动div</div>
-      <div class="nav-item" v-focusable @click="go('/Example4')">
+      </router-link>
+      <router-link class="nav-item" v-focusable to='/Example2'>自定义配置</router-link>
+      <router-link class="nav-item" v-focusable to='/Example3'>滚动router-link</router-link>
+      <router-link class="nav-item" v-focusable to='/Example4'>
         requestFocus
         getElementByPath
-      </div>
-      <div class="nav-item" v-focusable @click="go('/Example5')">混着使用</div>
-      <div class="nav-item" v-focusable @click="go('/Example6')">综合案例</div>
-      <div class="nav-item" v-focusable @click="go('/Example8')">tv画廊</div>
-      <div class="nav-item" v-focusable @click="go('/Example9')">弹出层滑动</div>
-      <div class="nav-item" v-focusable @click="go('/Example10')">表单</div>
-      <div class="nav-item" v-focusable @click="go('/Example11')">elementui表单</div>
-      <div class="nav-item" v-focusable @click="go('/Example12')">antd表单</div>
+      </router-link>
+      <router-link class="nav-item" v-focusable to='/Example5'>混着使用</router-link>
+      <router-link class="nav-item" v-focusable to='/Example6'>综合案例</router-link>
+      <router-link class="nav-item" v-focusable to='/Example8'>tv画廊</router-link>
+      <router-link class="nav-item" v-focusable to='/Example9'>弹出层滑动</router-link>
+      <router-link class="nav-item" v-focusable to='/Example10'>表单</router-link>
+      <router-link class="nav-item" v-focusable to='/Example11'>elementui表单</router-link>
+      <router-link class="nav-item" v-focusable to='/Example12'>antd表单</router-link>
+      <router-link class="nav-item" v-focusable to='/Example13'>局部滚动/整页滚动</router-link>
+      <router-link class="nav-item" v-focusable to='/Example14'>滚动scrollTo</router-link>
     </div>
     <div class="content-app">
       <router-view />
@@ -32,10 +34,13 @@ export default {
   created() {},
   methods: {
     go(path) {
+
       this.$router.push({ path: path });
-      setTimeout(() => {
-        location.reload();
-      }, 100);
+
+      
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 100);
     }
   }
 };
@@ -47,32 +52,24 @@ export default {
   padding: 0;
   list-style: none;
 }
+
 #app {
-  display: flex;
+  display: flex;min-height: 100%;
 }
 .content-app {
   flex: 1;
-  padding-top: 150px;
+  padding-top:20px;padding-left:20px;
 }
 .nav-box {
-  width: 200px;
+  width: 260px;
   left: 0;
   top: 0;
   bottom: 0;
-  padding-top: 50px;
+  padding-top: 20px;background-color: #fafafa;
 }
 .nav-box .nav-item {
-  display: block;
-  width: 130px;
-  margin-bottom: 20px;
-  padding: 5px 10px;
-  line-height: 28px;
-  color: #333;
-  background-color: #272b30;
-  color: #fff;
-  vertical-align: text-bottom;
-  border-radius: 0 50px 50px 0;
-  text-decoration: none;
+ padding:5px 10px;cursor: pointer;display: block;color:#333;
+ &.router-link-exact-active{color:#07c160}
 }
 .nav-box .nav-item.div-exact-active {
   background-color: #07c160;

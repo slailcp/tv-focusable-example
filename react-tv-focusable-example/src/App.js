@@ -15,6 +15,8 @@ import Example7 from './views/example7';
 import Example8 from './views/example8';
 import Example9 from './views/example9';
 import Example10 from './views/example10';
+import Example11 from './views/example11';
+import Example12 from './views/example12';
 
 import './common/public.css';
 import 'antd/dist/antd.css';
@@ -23,10 +25,10 @@ export default class App extends Component {
   render() {
     return (
         <Router>
-          <div>
+          <div className="app">
             <nav className="nav-box">
                 <NavLink className="nav-item" activeClassName="active" to="/example1">设置元素可获取焦点(focusable)</NavLink>
-                <NavLink className="nav-item" activeClassName="active" to="/example2">指定焦点移到到某一个元素上(ie)</NavLink>
+                <NavLink className="nav-item" activeClassName="active" to="/example2">指定焦点移到到某一个元素上</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example3">自定义焦点移动(自定义事件)</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example4">自定义配置</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example5">局部滚动</NavLink>
@@ -35,6 +37,8 @@ export default class App extends Component {
                 <NavLink className="nav-item" activeClassName="active" to="/example8">弹出层滚动</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example9">表单</NavLink>
                 <NavLink className="nav-item" activeClassName="active" to="/example10">antd表单</NavLink>
+                <NavLink className="nav-item" activeClassName="active" to="/example11">scrollTo</NavLink>
+                <NavLink className="nav-item" activeClassName="active" to="/example12">全局/局部滚动</NavLink>
             </nav>
     
             {/* A <Switch> looks through its children <Route>s and
@@ -70,6 +74,12 @@ export default class App extends Component {
                 </Route>
                 <Route path="/example10">
                   <Example10 />
+                </Route>
+                <Route path="/example11">
+                  <Example11 />
+                </Route>
+                <Route path="/example12">
+                  <Example12 />
                 </Route>
               </Switch>
             </div>

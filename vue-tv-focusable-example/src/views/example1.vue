@@ -33,16 +33,29 @@
         </button>
       </div>
     </div>
+
+   
   </div>
 </template>
 
 <script>
+import {focusable} from "vue-tv-focusable"; 
+/*
+使用focusable调用，
+focusable等同于this.$tv
+
+this.$tv.focusClassName = 'focus';也可以写成focusable.focusClassName = 'focus';
+*/ 
+
 export default {
   name: "Example1",
   data() {
     return {
       dShow: false,
     };
+  },
+  mounted() {
+  
   },
   methods: {
     focus() {
@@ -53,7 +66,7 @@ export default {
     },
     left(index) {
       console.log("左");
-      this.$tv.next("left");
+      focusable.next("left"); // focusable等同于this.$tv
     },
     right(index) {
       console.log("右");
@@ -87,6 +100,7 @@ export default {
         this.$tv.getElementByPath('//div[@class="demo"]/div[5]')
       );
     },
+    
   },
 };
 </script>
