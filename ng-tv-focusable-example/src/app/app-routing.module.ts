@@ -10,6 +10,8 @@ import { Example7Component } from './views/example7.component';
 import { Example7DetailComponent } from './views/example7-detail.component';
 import { Example8Component } from './views/example8.component';
 import { Example9Component } from './views/example9.component';
+import { Example10Component } from './views/example10.component';
+import { Example11Component } from './views/example11.component';
 
 const routes: Routes = [
   {
@@ -51,6 +53,14 @@ const routes: Routes = [
   {
     path: 'example9',
     component: Example9Component
+  },
+  {
+    path: 'example10',
+    component: Example10Component
+  },
+  {
+    path: 'example11',
+    component: Example11Component
   },
   {path: '', redirectTo: '/example1', pathMatch: 'full'},
 ];

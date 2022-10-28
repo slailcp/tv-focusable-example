@@ -13,6 +13,8 @@ import { Example7Component } from './views/example7.component';
 import { Example7DetailComponent } from './views/example7-detail.component';
 import { Example8Component } from './views/example8.component';
 import { Example9Component } from './views/example9.component';
+import { Example10Component } from './views/example10.component';
+import { Example11Component } from './views/example11.component';
 
 import { TvFocusableModule, $tv } from 'ng-tv-focusable';
 
@@ -37,7 +39,9 @@ window.$tv = $tv; // 定义全局变量
     Example7Component,
     Example7DetailComponent,
     Example8Component,
-    Example9Component
+    Example9Component,
+    Example10Component,
+    Example11Component,
   ],
   imports: [
     BrowserModule,

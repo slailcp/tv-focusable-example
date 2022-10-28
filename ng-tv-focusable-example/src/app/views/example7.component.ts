@@ -65,7 +65,7 @@ export class Example7Component implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    document.body.style.backgroundColor = '#010d19';
+    // document.body.style.backgroundColor = '#010d19';
     window.$tv.distanceToCenter = true;
     window.$tv.setScrollEl(document.querySelector('.item-box'))
     window.$tv.requestFocus(window.$tv.getElementByPath("//div[@class='perspective']/div[3]"));
