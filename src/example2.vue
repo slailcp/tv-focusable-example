@@ -1,69 +1,116 @@
 <template>
-  <div class="focusTest2">    
-    <div 
-    v-focusable class="div_item" v-for="(item, index) of data1" :key="index" 
-    @left="testLeft(item,$event)" 
-    @right="testRight(item,$event)" 
-    @up="testUp(item,$event)" 
-    @down="testDown(item,$event)"
-    @long-press="longPress(item,$event)" 
-    @on-focus="testFocus(item,$event)" 
-    @on-blur="testBlur(item,$event)"
+  <div class="focusTest2">
+    <div
+      v-focusable
+      class="div_item"
+      v-for="(item, index) of data1"
+      :key="index"
+      @left="testLeft(item, $event)"
+      @right="testRight(item, $event)"
+      @up="testUp(item, $event)"
+      @down="testDown(item, $event)"
+      @long-press="longPress(item, $event)"
+      @on-focus="testFocus(item, $event)"
+      @on-blur="testBlur(item, $event)"
     >
-      {{item}}
-      <template v-if="item =='left'">向左跳转到第4个</template>
-      <template v-if="item =='up'">向上跳转到第10个</template>
+      {{ item }}
+      <template v-if="item == 'left'">向左跳转到第4个</template>
+      <template v-if="item == 'up'">向上跳转到第10个</template>
     </div>
   </div>
 </template>
 <script>
-import { onMounted, reactive, toRefs } from '@vue/runtime-core';
-import { getCurrentInstance } from 'vue'
+import { onMounted, reactive, toRefs } from "@vue/runtime-core";
+import { focusable } from "vue-tv-focusable";
 
 export default {
   name: "FocusTest2",
   setup() {
-    const { proxy } = getCurrentInstance()
-
     const testBlur = (item) => {
-      if(item == 'blur'){ console.log('blur');}
+      if (item == "blur") {
+        console.log("blur");
+      }
     };
     const testFocus = (item) => {
-      if(item == 'focus'){ console.log('focus');}
+      if (item == "focus") {
+        console.log("focus");
+      }
     };
 
     const testLeft = (item) => {
-      
-      if(item == 'left'){ 
-        console.log('left');
-        proxy.$tv.requestFocus(proxy.$tv.getElementByPath('//div[@class="focusTest2"]/div[4]'))
+      if (item == "left") {
+        console.log("left");
+        focusable.next(
+          focusable.getElementByPath('//div[@class="focusTest2"]/div[4]')
+        );
+      }else{
+        focusable.next("left")
       }
     };
     const testRight = (item) => {
-      if(item == 'right'){ console.log('right');}
+      if (item == "right") {
+        console.log("right");
+        focusable.next(item);
+      }else{
+        focusable.next("right")
+      }
     };
-    
+
     const testUp = (item) => {
-      if(item == 'up'){ 
-        console.log('up');
-        proxy.$tv.requestFocus(proxy.$tv.getElementByPath('//div[@class="focusTest2"]/div[10]'))
+      if (item == "up") {
+        console.log("up");
+        focusable.next(
+          focusable.getElementByPath('//div[@class="focusTest2"]/div[10]')
+        );
+      }else{
+        focusable.next("up")
       }
     };
     const testDown = (item) => {
-      if(item == 'down'){ console.log('down');}
+      if (item == "down") {
+        console.log("down");
+        focusable.next(item);
+      }else{
+        focusable.next("down")
+      }
     };
 
     const longPress = (item) => {
-      if(item == 'longpress'){ console.log('longpress');}
+      if (item == "longpress") {
+        console.log("longpress");
+      }
     };
     const state = reactive({
-        data1:[],
-    })
-    onMounted(()=>{
-        setTimeout(()=>{
-            state.data1 = ['right',2,'down',4,5,6,7,'left',9,10,11,'up',13,'blur',15,16,'focus',18,19,29,21,'longpress']
-        },1000)
-    })
+      data1: [],
+    });
+    onMounted(() => {
+      setTimeout(() => {
+        state.data1 = [
+          "right",
+          2,
+          "down",
+          4,
+          5,
+          6,
+          7,
+          "left",
+          9,
+          10,
+          11,
+          "up",
+          13,
+          "blur",
+          15,
+          16,
+          "focus",
+          18,
+          19,
+          29,
+          21,
+          "longpress",
+        ];
+      }, 1000);
+    });
     return {
       testBlur,
       testFocus,
@@ -72,7 +119,7 @@ export default {
       testUp,
       longPress,
       testDown,
-      ...toRefs(state)
+      ...toRefs(state),
     };
   },
 };

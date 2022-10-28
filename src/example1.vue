@@ -129,7 +129,8 @@
 </template>
 <script>
 import { onMounted, reactive, toRefs } from "@vue/runtime-core";
-import { getCurrentInstance } from 'vue'
+import { focusable } from "vue-tv-focusable";
+
 export default {
   name: "FocusTest2",
   setup() {
@@ -143,7 +144,6 @@ export default {
       distanceToCenterActive: 1,
       limitingElActive: 1,
     });
-    const { proxy } = getCurrentInstance()
     onMounted(() => {
       setTimeout(() => {
         state.data1 = ['right',2,'down',4,5,6,7,'left',9,10,11,'up',13,'blur',15,16,'focus',18,19,29,21,'longpress',23,24,25,26,27,28,29,30,31,32,33,34,35,36,37]
@@ -159,14 +159,14 @@ export default {
     const type1 = () => {
       state.active = 1;
       state.disActive = 2;
-      proxy.$tv.findFocusType = 0; // 0：直线上最近的
-      proxy.$tv.initDis = 29;
+      focusable.findFocusType = 0; // 0：直线上最近的
+      focusable.initDis = 29;
     };
 
     const type2 = () => {
       state.active = 2;
       state.disActive = 0;
-      proxy.$tv.findFocusType = 1; // 1：上下左右距离最近的div
+      focusable.findFocusType = 1; // 1：上下左右距离最近的div
     };
 
     /**
@@ -178,15 +178,15 @@ export default {
     const dis = (type, num) => {
       state.disActive = type;
       state.active = 1;
-      proxy.$tv.findFocusType = 0;
-      proxy.$tv.initDis = num;
+      focusable.findFocusType = 0;
+      focusable.initDis = num;
     };
 
     // dis2 = () => {
     //   state.disActive = 2;
     //   state.active = 1;
-    //   proxy.$tv.findFocusType = 0;
-    //   proxy.$tv.findFocusType = 0;
+    //   focusable.findFocusType = 0;
+    //   focusable.findFocusType = 0;
     // }
 
     /**
@@ -199,7 +199,7 @@ export default {
      */
     const keys1 = () => {
       state.keysActive = 1;
-      proxy.$tv.KEYS = {
+      focusable.KEYS = {
         KEY_LEFT: [65, 37], // 65:A  37:←
         KEY_UP: [87, 38], // 87:W  38:↑
         KEY_RIGHT: [68, 39], // 68:D   39:→
@@ -210,7 +210,7 @@ export default {
 
     const keys2 = () => {
       state.keysActive = 2;
-      proxy.$tv.KEYS = {
+      focusable.KEYS = {
         KEY_LEFT: [90], // Z
         KEY_UP: [88], // X
         KEY_RIGHT: [67], // C
@@ -228,7 +228,7 @@ export default {
         document.getElementsByClassName("ng-focus-rotate")[0],
         "ng-focus-rotate"
       );
-      proxy.$tv.focusClassName = "ng-focus-scale";
+      focusable.focusClassName = "ng-focus-scale";
     };
 
     const focusclassname2 = () => {
@@ -237,34 +237,34 @@ export default {
         document.getElementsByClassName("ng-focus-scale")[0],
         "ng-focus-scale"
       );
-      proxy.$tv.focusClassName = "ng-focus-rotate";
+      focusable.focusClassName = "ng-focus-rotate";
     };
 
     const offsetDistance1 = () => {
       state.offsetDistanceActive = 1;
-      proxy.$tv.offsetDistance = 50;
+      focusable.offsetDistance = 50;
     };
     const offsetDistance2 = () => {
       state.offsetDistanceActive = 2;
-      proxy.$tv.offsetDistance = 250;
+      focusable.offsetDistance = 250;
     };
 
     const distanceToCenter1 = () => {
       state.distanceToCenterActive = 1;
-      proxy.$tv.distanceToCenter = false;
+      focusable.distanceToCenter = false;
     };
     const distanceToCenter2 = () => {
       state.distanceToCenterActive = 2;
-      proxy.$tv.distanceToCenter = true;
+      focusable.distanceToCenter = true;
     };
 
     const limitingEl1 = () => {
       state.limitingElActive = 1;
-      proxy.$tv.limitingEl = null;
+      focusable.limitingEl = null;
     };
     const limitingEl2 = () => {
       state.limitingElActive = 2;
-      proxy.$tv.limitingEl = document.querySelector(".demo");
+      focusable.limitingEl = document.querySelector(".demo");
     };
 
     const toggleClass = (el, className) => {

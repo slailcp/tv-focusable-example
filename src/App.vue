@@ -3,32 +3,33 @@
     <div
       class="div_item"
       v-focusable
-      v-for="(item,index) of data1"
+      v-for="(item, index) of data1"
       :key="index"
       @down="testDown(index)"
-    >{{item.name}}</div>
+    >
+      {{ item.name }}
+    </div>
     <div class="loading" v-show="loading">加载中...</div>
   </div>
 </template>
 <script>
 import { onMounted, reactive, toRefs } from "@vue/runtime-core";
-import { getCurrentInstance } from 'vue'
+import { focusable } from "vue-tv-focusable";
 
 export default {
   name: "FocusTest2",
   setup() {
-    const { proxy } = getCurrentInstance()
     const state = reactive({
       data1: [],
       pageno: 0,
-      loading:true
+      loading: true,
     });
     onMounted(() => {
-      proxy.$tv.scrollEl = document.querySelector('.focusTest2')
+      focusable.scrollEl = document.querySelector(".focusTest2");
       setTimeout(() => {
         state.pageno++;
         getData(state.pageno).then((res) => {
-          state.loading = false
+          state.loading = false;
           state.data1 = res;
         });
       }, 2000);
@@ -42,6 +43,7 @@ export default {
           state.data1 = [...state.data1, ...res];
         });
       }
+      focusable.next("down"); // vue-tv-focusable@2.x.x 必须加上此方法，否则不会往下获取焦点
     };
 
     // 假装这是个接口
@@ -68,12 +70,17 @@ export default {
 </script>
 <style scoped>
 .focusTest2 {
-  width: 660px;height:600px;overflow: hidden;
-  background: antiquewhite;padding:40px;text-align: center;
+  width: 660px;
+  height: 600px;
+  overflow: hidden;
+  background: antiquewhite;
+  padding: 40px;
+  text-align: center;
 }
 .div_item {
   width: 500px;
-  height: 100px;line-height: 100px;
+  height: 100px;
+  line-height: 100px;
   background-color: aquamarine;
   margin: 10px;
   display: inline-block;
@@ -88,5 +95,7 @@ export default {
   border-radius: 0.2rem;
   z-index: 100;
 }
-.loading{text-align: center;}
+.loading {
+  text-align: center;
+}
 </style>
