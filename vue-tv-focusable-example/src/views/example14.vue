@@ -1,27 +1,46 @@
 <template>
   <div>
-     <button @click="scrollto1">
-         页面滚动，滚动到.page1处，距离浏览器底部100</button><br />
-     <button @click="scrollto2">页面滚动，滚动到.page1处，居中展示</button><br />
-     <button @click="scrollto3">
-         局部滚动，滚动到”标识12“处，距离scroll底部100</button><br />
-     <button @click="scrollto4">
-         局部滚动，滚动到”标识12“处，在scroll中居中展示</button><br />
-     <div class="wraper flexbox">
-         <div class="box1 scroll" v-focusable style="width: 100%">
-             <div class="flexbox" style="width: 300%">
-                 <div class="item item5" v-for="item of 105" :key="item">局部滚动</div>
-                 <div id="scrol12" class="item item5" style="background: pink">
-                     标识12
-                 </div>
-                 <div class="item item5" v-for="item of 50" :key="item">局部滚动</div>
-             </div>
-         </div>
+    <button @click="scrollto1">
+      页面滚动，距离scroll底部300,滚动到.page1处</button
+    ><br />
+    <button @click="scrollto2">
+      页面滚动，滚动到.page1处，居中展示,耗时400毫秒</button
+    ><br />
+    <button @click="scrollto3">局部滚动，滚动倒数第二个，耗时400毫秒</button
+    ><br />
+    <button @click="scrollto4">
+      局部滚动，滚动到”标识12“处，在scroll中居中展示,耗时400毫秒</button
+    ><br />
+    <div class="wraper flexbox">
+      <div class="box1 scroll" v-focusable style="width: 100%">
+        <div class="flexbox" style="width: 200%">
+          <div class="item item5" v-for="item of 40" :key="item">
+            局部滚动{{ item }}
+          </div>
+          <div id="scrol12" class="item item5" style="background: pink">
+            标识12
+          </div>
+          <div class="item item5" v-for="item of 50" :key="item">
+            局部滚动2={{ item }}
+          </div>
+          <div class="item item5" style="background: red">倒数第二</div>
+          <div class="item item5">倒数第一</div>
+        </div>
+      </div>
 
-         <div class="box1 flexbox" style="width: 100%">
-             <div v-focusable class="item item2" style="margin-bottom: 10px" v-for="item of 10" :key="item"></div>
-         </div>
-         <div id="page1" style="
+      <div class="box1 flexbox" style="width: 100%">
+        <div
+          v-focusable
+          class="item item2"
+          style="margin-bottom: 10px"
+          v-for="item of 10"
+          :key="item"
+        ></div>
+      </div>
+      <div
+        v-focusable
+        id="page1"
+        style="
           width: 100%;
           height: 100px;
           margin-bottom: 10px;
@@ -29,14 +48,23 @@
           font-size: 30px;
           text-align: center;
           line-height: 100px;
-        ">
-             page1
-         </div>
-         <div class="box1 flexbox" style="width: 100%">
-             <div v-focusable class="item item2" style="margin-bottom: 10px" v-for="item of 10" :key="item"></div>
-         </div>
-     </div>
- </div>
+        "
+      >
+        page1
+      </div>
+      <div class="box1 flexbox" style="width: 100%">
+        <div
+          v-focusable
+          class="item item2"
+          style="margin-bottom: 10px"
+          v-for="item of 10"
+          :key="item"
+        ></div>
+      </div>
+    </div>
+
+    
+  </div>
 </template>
 
 <script>
@@ -47,34 +75,48 @@ export default {
   data() {
     return {};
   },
-  mounted() {},
+  mounted() {
+    focusable.setOnFocusChangeListener((e, focusstatus, keycode) => {
+      //  console.log(e);
+    });
+  },
   destroyed() {},
   methods: {
     scrollto1() {
       focusable.scrollTo({
         targetEl: document.querySelector("#page1"),
-        offset: 100, // 距离边界100
+        offset: 300, // 距离边界300
       });
+      // focusable.next(document.querySelector("#page1"))
     },
     scrollto2() {
       focusable.scrollTo({
         targetEl: document.querySelector("#page1"),
-        iscenter: true, // 居中
+        isCenter: true, // 居中
+        duration: 400,
       });
     },
     scrollto3() {
       focusable.scrollTo({
         scrollEl: document.querySelector(".scroll"),
-        targetEl: document.querySelector("#scrol12"),
-        offset: 50, // 距离边界50
+        targetEl:
+          document.querySelectorAll(".item5")[
+            document.querySelectorAll(".item5").length - 2
+          ],
+        
+        duration: 300,
       });
     },
     scrollto4() {
       focusable.scrollTo({
         scrollEl: document.querySelector(".scroll"),
         targetEl: document.querySelector("#scrol12"),
-        iscenter: true, // 居中
+        isCenter: true, // 居中
+        duration: 300,
       });
+
+      console.log(focusable.oldFocusEl);
+      console.log(focusable.curFocusEl);
     },
   },
 };

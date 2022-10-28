@@ -13,7 +13,7 @@
         requestFocus
         getElementByPath
       </router-link>
-      <router-link class="nav-item" v-focusable to='/Example5'>混着使用</router-link>
+      <router-link class="nav-item" v-focusable to='/Example5'>定位布局</router-link>
       <router-link class="nav-item" v-focusable to='/Example6'>综合案例</router-link>
       <router-link class="nav-item" v-focusable to='/Example8'>tv画廊</router-link>
       <router-link class="nav-item" v-focusable to='/Example9'>弹出层滑动</router-link>

@@ -113,7 +113,7 @@
       <div
         class="focus-item"
         v-focusable
-        v-for="index in 250"
+        v-for="index in 8500"
         :key="index"
         :ref="`fo` + index"
         @left="event('left', index)"
@@ -122,7 +122,7 @@
         @down="event('down', index)"
         @click="event('enter', index)"
       >
-        {{ index }}
+      {{item}}
       </div>
     </div>
   </div>
@@ -145,6 +145,7 @@ export default {
     // 当前页面自定义配置
     this.$nextTick(() => {
       this.$tv.focusClassName = "on-focus"; // 选中的class
+      // this.$tv.smoothTime = 2000;
       this.$tv.requestFocus(this.$refs.fo1, false);
     });
   },

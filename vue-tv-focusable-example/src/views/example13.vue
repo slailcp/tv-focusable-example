@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    focusable.scrollSpeed = 300; // 两次按键小于300毫秒的话则当作一次事件。
+    focusable.scrollSpeed = 100; // 两次按键小于100毫秒的话则当作一次事件。
     focusable.offsetDistance = 150; // 边缘距离为150
 
     // 监听全局焦点的blur或者focus事件，  e：获取/失去焦点的el  focusstatus:状态，true聚焦，false,失去焦点    keycode键值

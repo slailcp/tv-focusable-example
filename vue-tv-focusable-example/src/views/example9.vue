@@ -47,7 +47,6 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      this.$tv.focusClassName = "focus123";
       this.$tv.requestFocus(
         this.$tv.getElementByPath('//div[@class="demo"]/div[2]')
       );
@@ -83,7 +82,7 @@ export default {
     longPress(index) {},
     open() {
       this.show = !this.show;
-      this.focusEl = document.querySelector(".focus123");
+      this.focusEl = document.querySelector(".focus");
       this.$tv.limitingEl = document.querySelector(".demo5"); // 只有.demo5里面的focusable可以获取焦点
       this.$tv.scrollEl = this.$tv.getElementByPath(
         '//div[@class="demo demo5"]'
@@ -141,7 +140,7 @@ export default {
   border: 2px solid red;
   box-shadow: 0 0 20px red;
 }
-.focus123 {
+.focus {
   transform: scale(1.1);
   border: 2px solid green;
   box-shadow: 0 0 20px green;
@@ -156,7 +155,7 @@ export default {
   margin: 20px 0;
   border: 0;
   background: gray;
-  &.focus123 {
+  &.focus {
     border: 0;
     box-shadow: none;
     background: #ff6600;
