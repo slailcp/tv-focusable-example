@@ -27,7 +27,7 @@ class Example11 extends Component {
   scrollto2() {
     $tv.scrollTo({
       targetEl: document.querySelector("#page1"),
-      iscenter: true, // 居中
+      isCenter: true, // 居中
     });
   }
   scrollto3() {
@@ -41,7 +41,7 @@ class Example11 extends Component {
     $tv.scrollTo({
       scrollEl: document.querySelector(".scroll"),
       targetEl: document.querySelector("#scrol12"),
-      iscenter: true, // 居中
+      isCenter: true, // 居中
     });
   }
 
