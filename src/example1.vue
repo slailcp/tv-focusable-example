@@ -2,128 +2,48 @@
   <div class="focusTest2">
     <div>
       <div class="title">修改findFocusType(主要体现在div2上)</div>
-      <span class="btn" :class="active === 1 ? 'active' : ''" @click="type1()"
-        >优先直线</span
-      >
-      <span class="btn" :class="active === 2 ? 'active' : ''" @click="type2()"
-        >优先最近</span
-      >
+      <span class="btn" :class="active === 1 ? 'active' : ''" @click="type1()">优先直线</span>
+      <span class="btn" :class="active === 2 ? 'active' : ''" @click="type2()">优先最近</span>
     </div>
     <br />
     <div>
       <div class="title">修改initDis(主要体现在div2上)</div>
-      <span
-        class="btn"
-        :class="disActive === 3 ? 'active' : ''"
-        @click="dis(3, 50)"
-        >initDis 50px</span
-      >
-      <span
-        class="btn"
-        :class="disActive === 1 ? 'active' : ''"
-        @click="dis(1, 30)"
-        >initDis 30px</span
-      >
-      <span
-        class="btn"
-        :class="disActive === 2 ? 'active' : ''"
-        @click="dis(2, 29)"
-        >initDis 29px</span
-      >
+      <span class="btn" :class="disActive === 3 ? 'active' : ''" @click="dis(3, 50)">initDis 50px</span>
+      <span class="btn" :class="disActive === 1 ? 'active' : ''" @click="dis(1, 30)">initDis 30px</span>
+      <span class="btn" :class="disActive === 2 ? 'active' : ''" @click="dis(2, 29)">initDis 29px</span>
     </div>
     <br />
     <div>
       <div class="title">修改KEYS</div>
-      <span
-        class="btn"
-        :class="keysActive === 1 ? 'active' : ''"
-        @click="keys1()"
-        >A(左)/W(上)/D(右)/S(下)/P@click</span
-      >
-      <span
-        class="btn"
-        :class="keysActive === 2 ? 'active' : ''"
-        @click="keys2()"
-        >Z(左)/X(上)/C(右)/V(下)/B@click</span
-      >
+      <span class="btn" :class="keysActive === 1 ? 'active' : ''" @click="keys1()">A(左)/W(上)/D(右)/S(下)/P@click</span>
+      <span class="btn" :class="keysActive === 2 ? 'active' : ''" @click="keys2()">Z(左)/X(上)/C(右)/V(下)/B@click</span>
     </div>
     <br />
     <div>
       <div class="title">修改选中的classname的样式</div>
-      <span
-        class="btn"
-        :class="focusClassNameActive === 1 ? 'active' : ''"
-        @click="focusclassname1()"
-        >scale</span
-      >
-      <span
-        class="btn"
-        :class="focusClassNameActive === 2 ? 'active' : ''"
-        @click="focusclassname2()"
-        >rotate</span
-      >
+      <span class="btn" :class="focusClassNameActive === 1 ? 'active' : ''" @click="focusclassname1()">scale</span>
+      <span class="btn" :class="focusClassNameActive === 2 ? 'active' : ''" @click="focusclassname2()">rotate</span>
     </div>
     <br />
     <div>
       <div class="title">修改offsetDistance</div>
-      <span
-        class="btn"
-        :class="offsetDistanceActive === 1 ? 'active' : ''"
-        @click="offsetDistance1()"
-        >offsetDistance = 50</span
-      >
-      <span
-        class="btn"
-        :class="offsetDistanceActive === 2 ? 'active' : ''"
-        @click="offsetDistance2()"
-        >offsetDistance = 250</span
-      >
+      <span class="btn" :class="offsetDistanceActive === 1 ? 'active' : ''" @click="offsetDistance1()">offsetDistance = 50</span>
+      <span class="btn" :class="offsetDistanceActive === 2 ? 'active' : ''" @click="offsetDistance2()">offsetDistance = 250</span>
     </div>
     <br />
     <div>
       <div class="title">修改distanceToCenter</div>
-      <span
-        class="btn"
-        :class="distanceToCenterActive === 1 ? 'active' : ''"
-        @click="distanceToCenter1()"
-        >distanceToCenter = false</span
-      >
-      <span
-        class="btn"
-        :class="distanceToCenterActive === 2 ? 'active' : ''"
-        @click="distanceToCenter2()"
-        >distanceToCenter = true</span
-      >
+      <span class="btn" :class="distanceToCenterActive === 1 ? 'active' : ''" @click="distanceToCenter1()">distanceToCenter = false</span>
+      <span class="btn" :class="distanceToCenterActive === 2 ? 'active' : ''" @click="distanceToCenter2()">distanceToCenter = true</span>
     </div>
     <br />
     <div>
       <div class="title">修改limitingE=.demo，焦点只能在demo中移动</div>
-      <span
-        v-focusable
-        class="btn"
-        :class="limitingElActive === 1 ? 'active' : ''"
-        @click="limitingEl1()"
-        >limitingE = null</span
-      >
-      <span
-        v-focusable
-        class="btn"
-        :class="limitingElActive === 2 ? 'active' : ''"
-        @click="limitingEl2()"
-        >limitingE = .demo</span
-      >
+      <span v-focusable class="btn" :class="limitingElActive === 1 ? 'active' : ''" @click="limitingEl1()">limitingE = null</span>
+      <span v-focusable class="btn" :class="limitingElActive === 2 ? 'active' : ''" @click="limitingEl2()">limitingE = .demo</span>
     </div>
     <div class="demo">
-      <span
-        v-focusable
-        v-for="(item, index) of data1"
-        :key="index"
-        class="span"
-      >
-        {{ item }}
-        <template v-if="item == 'left'">向左跳转到第4个</template>
-        <template v-if="item == 'up'">向上跳转到第10个</template>
-      </span>
+      <span v-focusable v-for="(item, index) of 40" :key="index" class="span">{{ item }}</span>
     </div>
   </div>
 </template>
@@ -135,7 +55,6 @@ export default {
   name: "FocusTest2",
   setup() {
     const state = reactive({
-      data1: [],
       active: 2,
       disActive: 0,
       keysActive: 1,
@@ -145,9 +64,7 @@ export default {
       limitingElActive: 1,
     });
     onMounted(() => {
-      setTimeout(() => {
-        state.data1 = ['right',2,'down',4,5,6,7,'left',9,10,11,'up',13,'blur',15,16,'focus',18,19,29,21,'longpress',23,24,25,26,27,28,29,30,31,32,33,34,35,36,37]
-      }, 1000);
+      
     });
 
 
